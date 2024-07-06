@@ -1,61 +1,96 @@
-\documentclass[man]{apa7}
+\documentclass[man,12pt,a4paper,donotrepeattitle]{apa7}
 
-% Add support for UTF-8 encoding
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{ragged2e}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{float}
 
-% Use a font with better Unicode support
-\usepackage{lmodern}
-\usepackage{lipsum}
-\usepackage[american]{babel}
-\usepackage{csquotes}
+% Load biblatex with the APA style
 \usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
 \DeclareLanguageMapping{american}{american-apa}
 
-$if(title)$
-\title{$title$}
-$endif$
-$if(shorttitle)$
-\shorttitle{$shorttitle$}
-$endif$
-
-$if(author)$
-\author{$for(author)$$author$$sep$ \and $endfor$}
-$endif$
-$if(affiliation)$
-\affiliation{$affiliation$}
-$endif$
-
-$if(leftheader)$
-\leftheader{$leftheader$}
-$endif$
-
-$if(abstract)$
-\abstract{$abstract$}
-$endif$
-
-$if(keywords)$
-\keywords{$for(keywords)$$keywords$$sep$, $endfor$}
-$endif$
-
-$if(authornote)$
-\authornote{$authornote$}
-$endif$
-
+% Load the bibliography file
 \addbibresource{$bibliography$}
+
+% Add CSL environment definitions
+\makeatletter
+\newenvironment{CSLReferences}[2]
+  {\setlength{\parindent}{0pt}%
+   \setlength{\leftskip}{#1}%
+   \setlength{\rightskip}{#2}%
+   \setlength{\itemsep}{0pt}\par}
+  {\par}
+\newcommand{\CSLLeftMargin}{1em}
+\newcommand{\CSLRightMargin}{0pt}
+\newcommand{\CSLIndent}{1em}
+\newcommand{\CSLBlock}[1]{\parblock{#1}\endparblock}
+\newenvironment{CSLMultipleAuthors}
+  {\begin{CSLBlock}}
+  {\end{CSLBlock}}
+\newcommand{\CSLNameDash}{\textemdash}
+\makeatother
+
+
+\title{$title$}
+\author{$author$}
+\affiliation{$affiliation$}
+\shorttitle{$shorttitle$}
+\leftheader{$shorttitle$}
+
+% Create a custom title page
+\newcommand{\customtitlepage}{%
+  \begin{titlepage}
+    \fancyhf{}
+    \fancyhead[L]{\leftmark}
+    \fancyhead[R]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+    \thispagestyle{fancy}
+
+    \centering
+    \doublespacing
+     \vspace*{3\baselineskip} % Start title three lines down from the top margin
+    {\small\bfseries $title$\par}
+    \vspace{2\baselineskip} % One blank double-spaced line between title and author name
+    {\small $author$\par}
+    {\small $affiliation$\par}
+    {\small
+      $course$\par
+      $instructor$\par
+      $date$\par}
+  \end{titlepage}
+}
 
 \begin{document}
 
-\maketitle
+\customtitlepage
+
+\setcounter{page}{2} % Start main content on page 2
+
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\pagestyle{fancy}
+
+\section*{$title$}
+
+$if(abstract)$
+\begin{abstract}
+$abstract$
+\end{abstract}
+$endif$
+
+$if(keywords)$
+\textit{Keywords:} $for(keywords)$$keywords$$sep$, $endfor$
+$endif$
 
 $body$
 
-\printbibliography
+\newpage
 
-$if(appendix)$
-\appendix
-
-$appendix$
-$endif$
+% Print the bibliography with hanging indent
+\setlength{\bibhang}{0.5in}
+\printbibliography[title=References]
 
 \end{document}

@@ -1,0 +1,24 @@
+version: "3"
+services:
+  apa7_to_bibtex:
+    build:
+      context: ./rust
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/data
+    working_dir: /data
+    command: ["/usr/local/bin/apa7_to_bibtex", "input.md", "output.bib"]
+
+  reference_checker:
+    build:
+      context: ./python
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/data
+      - ~/devel/openai/api-key.txt:/app/openai_api_key.txt:ro
+    working_dir: /app
+    command: ["python", "reference_checker.py"]
+    environment:
+      - OPENAI_API_KEY_FILE=/app/openai_api_key.txt
+    depends_on:
+      - apa7_to_bibtex
