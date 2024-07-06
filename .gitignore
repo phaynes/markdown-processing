@@ -1,0 +1,25 @@
+# Ignore the target directory in apa7_to_bibtex
+apa7_to_bibtex/target/
+
+# Ignore node_modules directory
+node_modules/
+
+# Ignore build outputs
+dist/
+build/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore log files
+*.log
+
+# Ignore compiled files
+*.o
+*.so
+*.a
+
+# Ignore temporary files
+*.swp
+*.tmp
