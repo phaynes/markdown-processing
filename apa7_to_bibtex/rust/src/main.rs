@@ -1,3 +1,5 @@
+extern crate regex;
+
 use regex::Regex;
 use std::env;
 use std::fs::File;
@@ -34,11 +36,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut writer = BufWriter::new(output);
 
     let author_year_regex = Regex::new(r"^(.*?)\. \((\d{4})\)\. ").unwrap();
-    let title_regex = Regex::new(r"\. (.*?)\.").unwrap();
-    let journal_regex = Regex::new(r"\. \*(.*?)\*").unwrap();
-    let volume_issue_regex = Regex::new(r", (\d+)\((\d+)\)").unwrap();
-    let pages_regex = Regex::new(r", (\d+[-–]\d+)").unwrap();
-    let doi_regex = Regex::new(r"https://doi\.org/(.*)").unwrap();
+    let title_regex = Regex::new(r"\. \*([^\*]+)\*\.").unwrap();
+    let publisher_regex = Regex::new(r"\. ([^\.]+)\.$").unwrap();
+    let edition_regex = Regex::new(r"\((\d+)(?:th|st|nd|rd) ed\.\)").unwrap();
+    let journal_regex = Regex::new(r"\*([^\*]+)\*, (\d+), (\d+[-–]\d+).").unwrap();
+    let doi_regex = Regex::new(r"https://doi\.org/([^\s]+)").unwrap();
 
     for (index, line) in reader.lines().enumerate() {
         let line = line?;
@@ -55,68 +57,50 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 .split(',')
                 .next()
                 .unwrap()
-                .trim()
-                .split(' ')
+                .split_whitespace()
                 .last()
-                .unwrap();
-            let key = format!("{}_{}", first_author.to_lowercase(), year);
+                .unwrap()
+                .to_lowercase();
 
-            entry.push_str(&format!("@article{{{},\n", key));
+            entry.push_str(&format!("@book{{{}_{}},\n", first_author, year));
             entry.push_str(&format!("  author = {{{}}},\n", authors));
             entry.push_str(&format!("  year = {{{}}},\n", year));
-        } else {
-            eprintln!(
-                "Warning: Line {} does not match the expected format for author and year.",
-                index + 1
-            );
-            continue;
         }
 
         if let Some(captures) = title_regex.captures(&line) {
             let title = captures.get(1).unwrap().as_str();
             entry.push_str(&format!("  title = {{{}}},\n", title));
-        } else {
-            eprintln!("Warning: Line {} is missing a title.", index + 1);
+        }
+
+        if let Some(captures) = edition_regex.captures(&line) {
+            let edition = captures.get(1).unwrap().as_str();
+            entry.push_str(&format!("  edition = {{{} ed.}},\n", edition));
+        }
+
+        if let Some(captures) = publisher_regex.captures(&line) {
+            let publisher = captures.get(1).unwrap().as_str();
+            entry.push_str(&format!("  publisher = {{{}}},\n", publisher));
         }
 
         if let Some(captures) = journal_regex.captures(&line) {
             let journal = captures.get(1).unwrap().as_str();
+            let volume = captures.get(2).unwrap().as_str();
+            let pages = captures.get(3).unwrap().as_str();
             entry.push_str(&format!("  journal = {{{}}},\n", journal));
-        } else {
-            eprintln!("Warning: Line {} is missing a journal.", index + 1);
-        }
-
-        if let Some(captures) = volume_issue_regex.captures(&line) {
-            let volume = captures.get(1).unwrap().as_str();
-            let issue = captures.get(2).unwrap().as_str();
             entry.push_str(&format!("  volume = {{{}}},\n", volume));
-            entry.push_str(&format!("  number = {{{}}},\n", issue));
-        } else {
-            eprintln!(
-                "Warning: Line {} is missing volume and issue information.",
-                index + 1
-            );
-        }
-
-        if let Some(captures) = pages_regex.captures(&line) {
-            let pages = captures.get(1).unwrap().as_str();
             entry.push_str(&format!("  pages = {{{}}},\n", pages));
-        } else {
-            eprintln!("Warning: Line {} is missing page information.", index + 1);
         }
 
         if let Some(captures) = doi_regex.captures(&line) {
             let doi = captures.get(1).unwrap().as_str();
-            entry.push_str(&format!("  doi = {{{}}}\n", doi));
-        } else {
-            eprintln!("Warning: Line {} is missing a DOI.", index + 1);
+            entry.push_str(&format!("  doi = {{https://doi.org/{}}},\n", doi));
         }
 
-        entry.push_str("}\n\n");
+        entry.push_str("}\n");
+
         writer.write_all(entry.as_bytes())?;
     }
 
     writer.flush()?;
-    println!("Conversion complete. BibTeX file created: {}", output_file);
     Ok(())
 }

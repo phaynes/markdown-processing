@@ -1,5 +1,5 @@
 \documentclass[man,12pt,a4paper,donotrepeattitle]{apa7}
-
+\typeout{Using custom APA7 template}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{mathptmx}
@@ -8,31 +8,18 @@
 \usepackage{fancyhdr}
 \usepackage{float}
 
-% Load biblatex with the APA style
 \usepackage[style=apa,sortcites=true,sorting=nyt,backend=biber]{biblatex}
 \DeclareLanguageMapping{american}{american-apa}
 
-% Load the bibliography file
-\addbibresource{$bibliography$}
-
-% Add CSL environment definitions
-\makeatletter
-\newenvironment{CSLReferences}[2]
-  {\setlength{\parindent}{0pt}%
-   \setlength{\leftskip}{#1}%
-   \setlength{\rightskip}{#2}%
-   \setlength{\itemsep}{0pt}\par}
+% Define CSLReferences environment
+\usepackage{etoolbox}
+\newenvironment{CSLReferences}[2][]
+  {\setlength{\parindent}{-0.5in}%
+   \setlength{\leftskip}{0.5in}%
+   \setlength{\parskip}{8pt plus 4pt minus 4pt}}
   {\par}
-\newcommand{\CSLLeftMargin}{1em}
-\newcommand{\CSLRightMargin}{0pt}
-\newcommand{\CSLIndent}{1em}
-\newcommand{\CSLBlock}[1]{\parblock{#1}\endparblock}
-\newenvironment{CSLMultipleAuthors}
-  {\begin{CSLBlock}}
-  {\end{CSLBlock}}
-\newcommand{\CSLNameDash}{\textemdash}
-\makeatother
 
+\addbibresource{$bibliography$}
 
 \title{$title$}
 \author{$author$}
@@ -63,15 +50,20 @@
   \end{titlepage}
 }
 
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\thepage}
+\lhead{$shorttitle$}
+\renewcommand{\headrulewidth}{0.5pt}
+
+% Redefine the \printbibliography command
+\defbibheading{bibliography}{\clearpage\section*{References}}
+
 \begin{document}
 
 \customtitlepage
 
 \setcounter{page}{2} % Start main content on page 2
-
-\fancyhf{}
-\fancyhead[R]{\thepage}
-\pagestyle{fancy}
 
 \section*{$title$}
 
@@ -86,11 +78,7 @@ $if(keywords)$
 $endif$
 
 $body$
-
-\newpage
-
-% Print the bibliography with hanging indent
-\setlength{\bibhang}{0.5in}
-\printbibliography[title=References]
+\typeout{Number of bibliography entries: \thetotalbib}
+\printbibliography
 
 \end{document}

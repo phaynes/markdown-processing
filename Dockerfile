@@ -17,6 +17,7 @@ RUN apt-get update && \
     texlive-xetex \
     texlive-publishers \
     texlive-bibtex-extra \
+    texlive-latex-recommended \
     biber && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
