@@ -1,5 +1,4 @@
 \documentclass[man,12pt,a4paper,donotrepeattitle]{apa7}
-\typeout{Using custom APA7 template}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{mathptmx}
@@ -14,10 +13,20 @@
 % Define CSLReferences environment
 \usepackage{etoolbox}
 \newenvironment{CSLReferences}[2][]
-  {\setlength{\parindent}{-0.5in}%
+  {\clearpage\section*{References}\setlength{\parindent}{-0.5in}%
    \setlength{\leftskip}{0.5in}%
-   \setlength{\parskip}{8pt plus 4pt minus 4pt}}
+   \setlength{\parskip}{8pt plus 4pt minus 4pt}%
+   \setcounter{CSLReferences}{0}}
   {\par}
+
+% Remove leading numbers from CSLReferences
+\newcounter{CSLReferences}
+\AtEveryBibitem{%
+  \stepcounter{CSLReferences}%
+  \ifnum\value{CSLReferences}=1\unskip\fi%
+  \def\@tempa{0 }%
+  \expandafter\ifx\expandafter\@tempa\@firstoftwo#1 {\@gobble}{\@firstofone}%
+}
 
 \addbibresource{$bibliography$}
 
@@ -56,9 +65,6 @@
 \lhead{$shorttitle$}
 \renewcommand{\headrulewidth}{0.5pt}
 
-% Redefine the \printbibliography command
-\defbibheading{bibliography}{\clearpage\section*{References}}
-
 \begin{document}
 
 \customtitlepage
@@ -78,7 +84,5 @@ $if(keywords)$
 $endif$
 
 $body$
-\typeout{Number of bibliography entries: \thetotalbib}
-\printbibliography
 
 \end{document}

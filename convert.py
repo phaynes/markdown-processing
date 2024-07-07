@@ -2,18 +2,49 @@ import json
 import subprocess
 import sys
 import os
+import re
+
+def run_command(command, description):
+    print(f"Running {description} command")
+    try:
+        subprocess.run(command, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        print(f"{description} completed successfully.")
+    except subprocess.CalledProcessError as e:
+        print(f"Error running {description}")
+        raise
+
+def remove_files(base_name):
+    extensions = ['.log', '.aux', '.bbl', '.bcf', '.blg', '.run.xml', '.out', '.xdv', '.tex']
+    for ext in extensions:
+        try:
+            os.remove(f"{base_name}{ext}")
+        except OSError:
+            pass
+
+def post_process_tex(tex_file):
+    with open(tex_file, 'r') as file:
+        content = file.read()
+
+    # Modify the CSLReferences environment
+    content = re.sub(r'(\\begin\{CSLReferences\})\{1\}\{0\}', r'\1{1}{}', content)
+
+    # Remove any standalone '0' that might appear right after CSLReferences
+    content = re.sub(r'(\\begin\{CSLReferences\}\{1\}\{\})\s*0', r'\1', content)
+
+    with open(tex_file, 'w') as file:
+        file.write(content)
 
 def run_pandoc(config):
     input_files = config['input_files']
     output_file = config['output_file']
     latex_file = output_file.replace('.pdf', '.tex')
+    base_name = latex_file.replace('.tex', '')
 
-    command = [
+    pandoc_command = [
         'pandoc',
         '--from=markdown+tex_math_single_backslash',
         '--to=latex',
-        f'--output={latex_file}',  # Output to a .tex file
-        '--verbose',
+        f'--output={latex_file}',
         '--template=apa7.latex',
         f'--bibliography={config["bibliography"]}',
         '--csl=apa.csl',
@@ -24,46 +55,37 @@ def run_pandoc(config):
         '--variable', 'biblatexoptions=style=apa,sortcites=true,sorting=nyt,backend=biber',
     ]
 
-    # Add metadata
     for key in ['title', 'author', 'affiliation', 'course', 'instructor', 'date', 'shorttitle', 'keywords', 'bibliography']:
         if key in config:
             value = config[key]
             if isinstance(value, list):
                 for item in value:
-                    command.extend([f'--metadata={key}:{item}'])
+                    pandoc_command.extend([f'--metadata={key}:{item}'])
             else:
-                command.extend([f'--metadata={key}:{value}'])
+                pandoc_command.extend([f'--metadata={key}:{value}'])
 
-    # Ensure shorttitle is set
-    if 'shorttitle' not in config:
-        command.extend(['--metadata=shorttitle:' + config.get('title', '').split(':')[0]])
+    pandoc_command.extend(input_files)
 
-    command.extend(input_files)
+    run_command(pandoc_command, "Pandoc")
 
-    print("Running Pandoc command:", ' '.join(command))
+    # Post-process the .tex file to modify the CSLReferences environment
+    post_process_tex(latex_file)
 
-    try:
-        result = subprocess.run(command, check=True, capture_output=True, text=True)
-        print("Pandoc output:")
-        print(result.stdout)
-        print("Pandoc error output:")
-        print(result.stderr)
+    # Run xelatex
+    xelatex_command = ['xelatex', '-interaction=nonstopmode', '-no-pdf', latex_file]
+    run_command(xelatex_command, "XeLaTeX (first run)")
 
-        # Now run xelatex on the generated LaTeX file
-        xelatex_command = ['xelatex', '-interaction=nonstopmode', latex_file]
-        print("Running XeLaTeX command:", ' '.join(xelatex_command))
-        xelatex_result = subprocess.run(xelatex_command, check=True, capture_output=True, text=True)
-        print("XeLaTeX output:")
-        print(xelatex_result.stdout)
-        print("XeLaTeX error output:")
-        print(xelatex_result.stderr)
+    # Run biber
+    biber_command = ['biber', base_name]
+    run_command(biber_command, "Biber")
 
-    except subprocess.CalledProcessError as e:
-        print("Error running Pandoc or XeLaTeX:")
-        print(e.stdout)
-        print("Error output:")
-        print(e.stderr)
-        raise
+    # Run xelatex twice more
+    xelatex_command = ['xelatex', '-interaction=nonstopmode', latex_file]
+    run_command(xelatex_command, "XeLaTeX (second run)")
+    run_command(xelatex_command, "XeLaTeX (final run)")
+
+    # Remove all unnecessary files, keeping only the PDF
+    remove_files(base_name)
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
