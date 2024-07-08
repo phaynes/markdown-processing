@@ -1,11 +1,15 @@
-# APA7 Markdown to PDF Converter and Reference Checker
+# Markdown to APA7 PDF Converter
+
+## Introd
+ - command in path.
+  - being able to see markdown in browser.
 
 ## System Overview
 This system is designed to convert Markdown documents into PDF format, adhering to APA 7th edition guidelines. It uses a combination of Pandoc for Markdown processing, LaTeX for PDF generation, and custom Python scripts for orchestration and bibliography conversion. The system is containerized using Docker for consistent performance across different environments.
 
 Additionally, it also has:
-1. An APA7 to BibTeX converter (written in Rust)
-2. A reference checker (written in Python)
+1. APAv7 to bibtex converter.
+2. APAv7 reference checker (written in Python)
 
 These additional elements work together to convert APA7 style references to BibTeX format and then check the references for compliance and accuracy.
 

@@ -1,0 +1,97 @@
+body {
+    font-family: Times New Roman, serif;
+    font-size: 12pt;
+    line-height: 2;
+    margin: 1in;
+    max-width: 8.5in;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+h1 {
+    font-size: 12pt;
+    text-align: center;
+}
+
+h2 {
+    font-size: 12pt;
+    text-align: left;
+}
+
+p {
+    text-indent: 0.5in;
+    margin-bottom: 0;
+}
+
+.title {
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.author {
+    font-size: 12pt;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.affiliation {
+    font-size: 12pt;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.abstract {
+    margin-top: 2em;
+    margin-bottom: 2em;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.abstract p {
+    text-indent: 0;
+}
+
+.keywords {
+    font-style: italic;
+}
+
+.references {
+    margin-top: 2em;
+}
+
+.references h1 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.references p {
+    text-indent: -0.5in;
+    padding-left: 0.5in;
+    margin-bottom: 1em;
+}
+
+table {
+    border-collapse: collapse;
+    margin-bottom: 1em;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 0.5em;
+}
+
+figure {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+figcaption {
+    margin-top: 0.5em;
+    font-style: italic;
+}
