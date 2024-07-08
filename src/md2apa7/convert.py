@@ -3,6 +3,7 @@ import subprocess
 import sys
 import os
 import re
+import argparse
 
 def run_command(command, description):
     print(f"Running {description} command")
@@ -34,7 +35,24 @@ def post_process_tex(tex_file):
     with open(tex_file, 'w') as file:
         file.write(content)
 
-def run_pandoc(config):
+def run_pandoc(config, output_format):
+    input_files = config['input_files']
+    output_file = config['output_file']
+
+    # Update the output file extension based on the format
+    output_file = os.path.splitext(output_file)[0] + f'.{output_format}'
+    config['output_file'] = output_file
+
+    if output_format == 'pdf':
+        return run_pandoc_pdf(config)
+    elif output_format == 'docx':
+        return run_pandoc_docx(config)
+    elif output_format == 'html':
+        return run_pandoc_html(config)
+    else:
+        raise ValueError(f"Unsupported output format: {output_format}")
+
+def run_pandoc_pdf(config):
     input_files = config['input_files']
     output_file = config['output_file']
     latex_file = output_file.replace('.pdf', '.tex')
@@ -55,15 +73,7 @@ def run_pandoc(config):
         '--variable', 'biblatexoptions=style=apa,sortcites=true,sorting=nyt,backend=biber',
     ]
 
-    for key in ['title', 'author', 'affiliation', 'course', 'instructor', 'date', 'shorttitle', 'keywords', 'bibliography']:
-        if key in config:
-            value = config[key]
-            if isinstance(value, list):
-                for item in value:
-                    pandoc_command.extend([f'--metadata={key}:{item}'])
-            else:
-                pandoc_command.extend([f'--metadata={key}:{value}'])
-
+    add_metadata(pandoc_command, config)
     pandoc_command.extend(input_files)
 
     run_command(pandoc_command, "Pandoc")
@@ -87,21 +97,73 @@ def run_pandoc(config):
     # Remove all unnecessary files, keeping only the PDF
     remove_files(base_name)
 
+def run_pandoc_docx(config):
+    input_files = config['input_files']
+    output_file = config['output_file']
+
+    pandoc_command = [
+        'pandoc',
+        '--from=markdown+tex_math_single_backslash',
+        '--to=docx',
+        f'--output={output_file}',
+        f'--bibliography={config["bibliography"]}',
+        f'--csl=/usr/local/share/pandoc/data/apa.csl',
+        '--citeproc',
+        '--standalone',
+    ]
+
+    add_metadata(pandoc_command, config)
+    pandoc_command.extend(input_files)
+
+    run_command(pandoc_command, "Pandoc (DOCX)")
+
+def run_pandoc_html(config):
+    input_files = config['input_files']
+    output_file = config['output_file']
+
+    pandoc_command = [
+        'pandoc',
+        '--from=markdown+tex_math_single_backslash',
+        '--to=html',
+        f'--output={output_file}',
+        f'--bibliography={config["bibliography"]}',
+        f'--csl=/usr/local/share/pandoc/data/apa.csl',
+        '--citeproc',
+        '--standalone',
+        '--mathjax',
+    ]
+
+    add_metadata(pandoc_command, config)
+    pandoc_command.extend(input_files)
+
+    run_command(pandoc_command, "Pandoc (HTML)")
+
+def add_metadata(pandoc_command, config):
+    for key in ['title', 'author', 'affiliation', 'course', 'instructor', 'date', 'shorttitle', 'keywords', 'bibliography']:
+        if key in config:
+            value = config[key]
+            if isinstance(value, list):
+                for item in value:
+                    pandoc_command.extend([f'--metadata={key}:{item}'])
+            else:
+                pandoc_command.extend([f'--metadata={key}:{value}'])
+
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
-        print("Usage: python3 convert.py <config.json>")
+    parser = argparse.ArgumentParser(description='Convert Markdown to APA7 format')
+    parser.add_argument('config', help='Path to the config JSON file')
+    parser.add_argument('--format', choices=['pdf', 'docx', 'html'], default='pdf',
+                        help='Output format (default: pdf)')
+    args = parser.parse_args()
+
+    if not os.path.exists(args.config):
+        print(f"Error: Config file '{args.config}' not found.")
         sys.exit(1)
 
-    config_path = sys.argv[1]
-    if not os.path.exists(config_path):
-        print(f"Error: Config file '{config_path}' not found.")
-        sys.exit(1)
-
-    with open(config_path, 'r') as f:
+    with open(args.config, 'r') as f:
         config = json.load(f)
 
     try:
-        run_pandoc(config)
+        run_pandoc(config, args.format)
     except Exception as e:
         print(f"Error during conversion: {e}")
         sys.exit(1)
