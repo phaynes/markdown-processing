@@ -1,3 +1,6 @@
+%
+% See the following document for description. https://ctan.math.illinois.edu/macros/latex/contrib/apa7/apa7.pdf
+%
 \documentclass[man,12pt,a4paper,donotrepeattitle]{apa7}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
