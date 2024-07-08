@@ -49,6 +49,8 @@ def run_pandoc(config, output_format):
         return run_pandoc_docx(config)
     elif output_format == 'html':
         return run_pandoc_html(config)
+    elif output_format == 'md':
+        return run_pandoc_markdown(config)
     else:
         raise ValueError(f"Unsupported output format: {output_format}")
 
@@ -71,6 +73,8 @@ def run_pandoc_pdf(config):
         '--variable', 'documentclass=apa7',
         '--variable', 'classoption=man',
         '--variable', 'biblatexoptions=style=apa,sortcites=true,sorting=nyt,backend=biber',
+        '--mathjax',
+
     ]
 
     add_metadata(pandoc_command, config)
@@ -97,46 +101,70 @@ def run_pandoc_pdf(config):
     # Remove all unnecessary files, keeping only the PDF
     remove_files(base_name)
 
-def run_pandoc_docx(config):
+def run_pandoc_markdown(config):
     input_files = config['input_files']
     output_file = config['output_file']
+    latex_file = output_file.replace('.md', '.tex')
 
-    pandoc_command = [
+    # Step 1: Convert to LaTeX (similar to PDF process)
+    latex_command = [
         'pandoc',
         '--from=markdown+tex_math_single_backslash',
-        '--to=docx',
-        f'--output={output_file}',
+        '--to=latex',
+        f'--output={latex_file}',
+        f'--template=/usr/local/share/pandoc/data/apa7.latex',
         f'--bibliography={config["bibliography"]}',
         f'--csl=/usr/local/share/pandoc/data/apa.csl',
         '--citeproc',
         '--standalone',
+        '--variable', 'documentclass=apa7',
+        '--variable', 'classoption=man',
+        '--variable', 'biblatexoptions=style=apa,sortcites=true,sorting=nyt,backend=biber',
     ]
+    add_metadata(latex_command, config)
+    latex_command.extend(input_files)
+    run_command(latex_command, "Pandoc (Markdown to LaTeX)")
 
-    add_metadata(pandoc_command, config)
-    pandoc_command.extend(input_files)
+    # Post-process the .tex file to modify the CSLReferences environment
+    post_process_tex(latex_file)
 
-    run_command(pandoc_command, "Pandoc (DOCX)")
-
-def run_pandoc_html(config):
-    input_files = config['input_files']
-    output_file = config['output_file']
-
-    pandoc_command = [
+    # Step 2: Convert LaTeX back to Markdown
+    md_command = [
         'pandoc',
-        '--from=markdown+tex_math_single_backslash',
-        '--to=html',
+        '--from=latex',
+        '--to=markdown_strict-raw_html-fenced_divs-bracketed_spans',
         f'--output={output_file}',
-        f'--bibliography={config["bibliography"]}',
-        f'--csl=/usr/local/share/pandoc/data/apa.csl',
-        '--citeproc',
-        '--standalone',
-        '--mathjax',
+        '--wrap=preserve',
+        '--markdown-headings=atx',
+        latex_file
     ]
+    run_command(md_command, "Pandoc (LaTeX to Markdown)")
 
-    add_metadata(pandoc_command, config)
-    pandoc_command.extend(input_files)
 
-    run_command(pandoc_command, "Pandoc (HTML)")
+    # Post-process the markdown file
+    with open(output_file, 'r') as file:
+        content = file.read()
+
+    # Remove any remaining div-like structures
+    content = re.sub(r':::.*?\n', '', content, flags=re.DOTALL)
+    content = re.sub(r'{#.*?}', '', content)
+
+
+    # Ensure there's a blank line before the References section
+    content = re.sub(r'(# References)', r'\n\1', content)
+
+    # Remove any extra newlines at the end of the document
+    content = content.rstrip() + '\n'
+
+    with open(output_file, 'w') as file:
+        file.write(content)
+
+    print(f"Markdown file with processed citations and references created: {output_file}")
+
+    # Optionally, remove the temporary LaTeX file
+    os.remove(latex_file)
+
+    return output_file
 
 def add_metadata(pandoc_command, config):
     for key in ['title', 'author', 'affiliation', 'course', 'instructor', 'date', 'shorttitle', 'keywords', 'bibliography']:
@@ -151,7 +179,7 @@ def add_metadata(pandoc_command, config):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Convert Markdown to APA7 format')
     parser.add_argument('config', help='Path to the config JSON file')
-    parser.add_argument('--format', choices=['pdf', 'docx', 'html'], default='pdf',
+    parser.add_argument('--format', choices=['pdf', 'docx', 'html', 'md'], default='pdf',
                         help='Output format (default: pdf)')
     args = parser.parse_args()
 
