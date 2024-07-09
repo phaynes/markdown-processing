@@ -6,4 +6,4 @@
 # Build the Docker image
 docker build -t md2apa7-converter .
 
-cp md2apa7 ../../bin/
+cp md2apa7 ../bin/
