@@ -1,0 +1,9 @@
+{
+  "input_files": ["2024-05-11-assignment2.md"],
+  "output_file": "assignment2.pdf",
+  "bibliography": "assignment2-refs.bib",
+  "default_ai": "openai",
+  "openAI_key": "/Users/philiphaynes/devel/openai/api-key.txt",
+  "anthropic_key": "/Users/philiphaynes/devel/claude/claude-key.txt",
+  "proofing_prompts": "/Users/philiphaynes/devel/markdown/proofing-prompts.json"
+}
