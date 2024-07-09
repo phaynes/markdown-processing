@@ -1,17 +1,19 @@
-# Automating the Preparation of Student Academic Essays
+# Automating Preparation of Student Essays
 
-** Welcome **
-Imagine arriving at your class, ready to dive into the semester, only to find out your assignments require extensive research and perfect ‘APA 7 referencing’. What’s your first thought?
+## ** Welcome **
+Imagine arriving at your class, ready to dive into the semester, only to discover your assignments require extensive research and perfect ‘APA 7 referencing’. What are your first thought?
 
-A quick look at the required reading and a few frantic Google searches later, you discover that mastering APA 7 seems like a pricey and tedious endeavour. Initial attempts at formatting, alongside the collective groans of your peers, make it clear: this feels more like student torture than a learning exercise. It’s a requirement that distracts from the actual goal of learning and skill development.
+Quick examination of required reading and a few frantic Google searches later, elicits that mastery of APA 7 seems like a pricey and tedious endeavour. Initial attempts at formatting, alongside the collective groans of your peers, make it clear: this feels more like student torture than a learning exercise. It’s a requirement that distracts from the actual goal of learning and skill development.
 
 Despite this, traditional essay preparation remains a gatekeeper to the academic community. If you relish the idea of detailed, manual editing, this site might not be for you.
 
-But, if you want to craft outstanding essays with minimal hassle, welcome! This site is designed for students like you.
+On the other hand, if you want to craft outstanding essays with minimal hassle, welcome - we are here for you!
 
-The mission of this site, is to offer end-to-end automation for academic essay preparation. This means that:
-1. **Student** can concentrate on understanding and engaging with your subject, and deliver high-quality essays without the last-minute scramble of late night, manual formatting; and
-2. **Academics** can receive and grade high quality assignments, without trudging through endless formatting, language, and stylistic errors.
+The mission of this site is to offer end-to-end automation for academic essay preparation so students can concentrate on understanding and engaging with their subjects, deliver high-quality essays, without the highly stressful last-minute scramble.
+
+Now if somehow, you are an Academic and reading this, fear not there is something for you too. Maybe trudging through and marking endless numbers of papers formatting, language, and stylistic errors is not for you. If so, this site aims to lift the academic bar for your students so they all submit papers that look like they were written by a Professor.
+
+
 
 # Hand Crafted Approach to Essay Preparation
 

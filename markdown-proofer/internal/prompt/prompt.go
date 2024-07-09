@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"strings"
 
+	"github.com/phaynes/markdown-proofing-tool/internal/config"
 	"github.com/sashabaranov/go-openai"
-	"github.com/yourusername/markdown-proofing-tool/internal/config"
 )
 
 func BuildProofingPrompt(prompts []config.ProofingPrompt, proofType string) (string, error) {
