@@ -1,0 +1,59 @@
+{
+  "proofing_prompts": [
+    {
+      "label": "basic-proof",
+      "description": "Proof the markdown text for spelling and grammar.",
+      "criteria": [
+        "British English",
+        "active voice",
+        "markdown",
+        "academic style"
+      ],
+      "apply_to_all": [],
+      "include_file": false,
+      "file_path": "",
+      "request_additional_info": false
+    },
+    {
+      "label": "technical-proof",
+      "description": "Check for technical accuracy and consistency in terminology specific to the domain.",
+      "criteria": ["technical accuracy", "terminology consistency"],
+      "apply_to_all": ["basic-proof"],
+      "include_file": true,
+      "file_path": "path/to/technical-file.md",
+      "request_additional_info": true
+    },
+    {
+      "label": "clarity-review",
+      "description": "Ensure the text is clear and easy to understand for a general audience.",
+      "criteria": ["clarity", "readability"],
+      "apply_to_all": ["basic-proof"],
+      "include_file": false,
+      "file_path": "",
+      "request_additional_info": false
+    },
+    {
+      "label": "style-check",
+      "description": "Verify that the writing style adheres to the provided guidelines or style manual.",
+      "criteria": ["style guide adherence"],
+      "apply_to_all": ["basic-proof"],
+      "include_file": false,
+      "file_path": "",
+      "request_additional_info": false
+    },
+    {
+      "label": "fb",
+      "description": "Proof the following facebook post for spelling and grammar.",
+      "criteria": [
+        "British English",
+        "active voice",
+        "clarity",
+        "Daily Telegraph style"
+      ],
+      "apply_to_all": [""],
+      "include_file": false,
+      "file_path": "",
+      "request_additional_info": false
+    }
+  ]
+}
