@@ -19,6 +19,8 @@ type AIConfig struct {
 	OpenAIKey       string `json:"openAI_key"`
 	AnthropicKey    string `json:"anthropic_key"`
 	ProofingPrompts string `json:"proofing_prompts"`
+	UseGit          bool   `json:"use_git"`
+	ProofGitDiff    bool   `json:"proof_git_diff"`
 }
 
 type ProofingPrompt struct {
@@ -42,6 +44,8 @@ type AppConfig struct {
 	InputFile       string
 	OutputFile      string
 	AdditionalInfo  string
+	UseGit          bool
+	ProofGitDiff    bool
 }
 
 func Setup() (*AppConfig, error) {
@@ -52,6 +56,8 @@ func Setup() (*AppConfig, error) {
 	inputFile := flag.String("input", "", "Input file to proof")
 	outputFile := flag.String("output", "", "Output file for proofed content")
 	additionalInfo := flag.String("additional-info", "", "Additional information for proofing")
+	useGitFlag := flag.Bool("use-git", false, "Use git features")
+
 	flag.Parse()
 
 	// Load configurations
@@ -88,6 +94,8 @@ func Setup() (*AppConfig, error) {
 	if *inputFile == "" && len(config.InputFiles) > 0 {
 		*inputFile = config.InputFiles[0]
 	}
+	// Override UseGit if command-line flag is set
+	useGit := aiConfig.UseGit || *useGitFlag
 
 	return &AppConfig{
 		Config:          config,
@@ -100,6 +108,8 @@ func Setup() (*AppConfig, error) {
 		InputFile:       *inputFile,
 		OutputFile:      *outputFile,
 		AdditionalInfo:  *additionalInfo,
+		UseGit:          useGit,
+		ProofGitDiff:    aiConfig.ProofGitDiff,
 	}, nil
 }
 

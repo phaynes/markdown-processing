@@ -9,6 +9,7 @@ import (
 	"strings"
 
 	"github.com/phaynes/markdown-processing/markdown-proofer/internal/config"
+	"github.com/phaynes/markdown-processing/markdown-proofer/internal/git"
 	"github.com/phaynes/markdown-processing/markdown-proofer/internal/prompt"
 	"github.com/phaynes/markdown-processing/markdown-proofer/internal/proofer"
 )
@@ -25,9 +26,28 @@ func main() {
 		input = strings.Join(flag.Args(), " ")
 	} else if appConfig.InputFile != "" {
 		// Use input file from config if no command-line input
-		input, err = readInputFile(appConfig.InputFile)
-		if err != nil {
-			log.Fatalf("Error reading input file %s: %v", appConfig.InputFile, err)
+		if appConfig.UseGit && internal.IsGitRepository() {
+			err := internal.AddAndCommitChanges(appConfig.InputFile)
+			if err != nil {
+				log.Fatalf("Error in git operations: %v", err)
+			}
+
+			if appConfig.ProofGitDiff {
+				input, err = internal.GetGitDiff(appConfig.InputFile)
+				if err != nil {
+					log.Fatalf("Error getting git diff: %v", err)
+				}
+			} else {
+				input, err = readInputFile(appConfig.InputFile)
+				if err != nil {
+					log.Fatalf("Error reading input file %s: %v", appConfig.InputFile, err)
+				}
+			}
+		} else {
+			input, err = readInputFile(appConfig.InputFile)
+			if err != nil {
+				log.Fatalf("Error reading input file %s: %v", appConfig.InputFile, err)
+			}
 		}
 	} else {
 		log.Fatalf("No input provided. Please provide text as a command-line argument or specify an input file in the config.")
