@@ -2,7 +2,7 @@
   "proofing_prompts": [
     {
       "label": "basic-proof",
-      "description": "Proof the markdown text for spelling and grammar.",
+      "description": "Without providing comments, proof the text for spelling and grammar.",
       "criteria": [
         "British English",
         "active voice",
@@ -13,6 +13,20 @@
       "include_file": false,
       "file_path": "",
       "request_additional_info": false
+    },
+    {
+      "label": "basic-proof-refine",
+      "description": "Without providing comments, proof the text for spelling and grammar.",
+      "criteria": [
+        "British English",
+        "active voice",
+        "markdown",
+        "academic style"
+      ],
+      "apply_to_all": [],
+      "include_file": false,
+      "file_path": "",
+      "request_additional_info": true
     },
     {
       "label": "technical-proof",

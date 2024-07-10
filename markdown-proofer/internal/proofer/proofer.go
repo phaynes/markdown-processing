@@ -7,6 +7,9 @@ import (
 )
 
 func ProofText(input string, prompt string, appConfig *config.AppConfig) (string, error) {
+	fmt.Print("The AI prompt is: ")
+	fmt.Print(prompt)
+
 	switch appConfig.AIProvider {
 	case "openai":
 		return ProofTextOpenAI(input, prompt, appConfig.OpenAIKey)

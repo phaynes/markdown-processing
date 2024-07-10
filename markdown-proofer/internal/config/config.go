@@ -39,6 +39,9 @@ type AppConfig struct {
 	AnthropicKey    string
 	ProofType       string
 	AIProvider      string
+	InputFile       string
+	OutputFile      string
+	AdditionalInfo  string
 }
 
 func Setup() (*AppConfig, error) {
@@ -46,12 +49,12 @@ func Setup() (*AppConfig, error) {
 	aiConfigFile := flag.String("ai-config", "ai_config.json", "Path to the AI configuration file")
 	proofType := flag.String("type", "basic-proof", "Type of proofing to perform")
 	aiProvider := flag.String("ai", "", "AI provider to use (openai or anthropic)")
+	inputFile := flag.String("input", "", "Input file to proof")
+	outputFile := flag.String("output", "", "Output file for proofed content")
+	additionalInfo := flag.String("additional-info", "", "Additional information for proofing")
 	flag.Parse()
 
-	if flag.NArg() < 1 {
-		return nil, fmt.Errorf("Usage: mdp [options] <text>")
-	}
-
+	// Load configurations
 	config, err := loadConfig(*configFile)
 	if err != nil {
 		return nil, fmt.Errorf("Error loading essay configuration: %v", err)
@@ -81,6 +84,11 @@ func Setup() (*AppConfig, error) {
 		*aiProvider = aiConfig.DefaultAI
 	}
 
+	// If input file is not specified via flag, use the one from config
+	if *inputFile == "" && len(config.InputFiles) > 0 {
+		*inputFile = config.InputFiles[0]
+	}
+
 	return &AppConfig{
 		Config:          config,
 		AIConfig:        aiConfig,
@@ -89,6 +97,9 @@ func Setup() (*AppConfig, error) {
 		AnthropicKey:    anthropicKey,
 		ProofType:       *proofType,
 		AIProvider:      *aiProvider,
+		InputFile:       *inputFile,
+		OutputFile:      *outputFile,
+		AdditionalInfo:  *additionalInfo,
 	}, nil
 }
 

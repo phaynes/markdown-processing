@@ -58,8 +58,5 @@ func buildPrompt(prompt config.ProofingPrompt, allPrompts []config.ProofingPromp
 	if prompt.RequestAdditionalInfo {
 		builder.WriteString("\nIf you need any additional information or clarification to complete this task effectively, please state your questions clearly.")
 	}
-
-	builder.WriteString("\nPlease review and improve the provided text based on these instructions.")
-
 	return builder.String()
 }
