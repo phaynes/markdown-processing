@@ -1,13 +1,11 @@
 package prompt
 
 import (
-	"context"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"strings"
 
-	"github.com/phaynes/markdown-proofing-tool/internal/config"
-	"github.com/sashabaranov/go-openai"
+	"github.com/phaynes/markdown-processing/markdown-proofer/internal/config"
 )
 
 func BuildProofingPrompt(prompts []config.ProofingPrompt, proofType string) (string, error) {
@@ -23,9 +21,8 @@ func buildPrompt(prompt config.ProofingPrompt, allPrompts []config.ProofingPromp
 	var builder strings.Builder
 
 	// Prelude
-	builder.WriteString("You are an AI assistant specialised in proofreading and improving  text. ")
+	builder.WriteString("You are an AI assistant specialised in proofreading and improving text. ")
 	builder.WriteString("Your task is to review and enhance the given text based on the following criteria and instructions. ")
-	// builder.WriteString("Please return the improved text in markdown format.\n\n")
 
 	// Build the main prompt
 	builder.WriteString("Primary task: ")
@@ -49,7 +46,7 @@ func buildPrompt(prompt config.ProofingPrompt, allPrompts []config.ProofingPromp
 
 	// Include file content if specified
 	if prompt.IncludeFile && prompt.FilePath != "" {
-		data, err := ioutil.ReadFile(prompt.FilePath)
+		data, err := os.ReadFile(prompt.FilePath)
 		if err == nil {
 			builder.WriteString("\nAdditional context:\n")
 			builder.Write(data)
@@ -65,42 +62,4 @@ func buildPrompt(prompt config.ProofingPrompt, allPrompts []config.ProofingPromp
 	builder.WriteString("\nPlease review and improve the provided text based on these instructions.")
 
 	return builder.String()
-}
-
-func getProofingPrompt(prompts []ProofingPrompt, proofType string) (string, error) {
-	for _, prompt := range prompts {
-		if prompt.Label == proofType {
-			return buildPrompt(prompt, prompts), nil
-		}
-	}
-	return "", fmt.Errorf("proofing type not found: %s", proofType)
-}
-
-func proofText(input string, prompt string, apiKey string) (string, error) {
-	// fmt.Println("The prompt is:")
-	// fmt.Println(prompt)
-
-	client := openai.NewClient(apiKey)
-	resp, err := client.CreateChatCompletion(
-		context.Background(),
-		openai.ChatCompletionRequest{
-			Model: openai.GPT4o,
-			Messages: []openai.ChatCompletionMessage{
-				{
-					Role:    openai.ChatMessageRoleSystem,
-					Content: prompt,
-				},
-				{
-					Role:    openai.ChatMessageRoleUser,
-					Content: "Please review and improve the following  text:\n\n" + input,
-				},
-			},
-		},
-	)
-
-	if err != nil {
-		return "", fmt.Errorf("ChatCompletion error: %v", err)
-	}
-
-	return resp.Choices[0].Message.Content, nil
 }

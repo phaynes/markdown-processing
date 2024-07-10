@@ -6,9 +6,9 @@ import (
 	"log"
 	"strings"
 
-	"github.com/phaynes/markdown-proofing-tool/internal/config"
-	"github.com/phaynes/markdown-proofing-tool/internal/prompt"
-	"github.com/phaynes/markdown-proofing-tool/internal/proofer"
+	"github.com/phaynes/markdown-processing/markdown-proofer/internal/config"
+	"github.com/phaynes/markdown-processing/markdown-proofer/internal/prompt"
+	"github.com/phaynes/markdown-processing/markdown-proofer/internal/proofer"
 )
 
 func main() {

@@ -3,7 +3,7 @@ package proofer
 import (
 	"fmt"
 
-	"github.com/yourusername/markdown-proofing-tool/internal/config"
+	"github.com/phaynes/markdown-processing/markdown-proofer/internal/config"
 )
 
 func ProofText(input string, prompt string, appConfig *config.AppConfig) (string, error) {
