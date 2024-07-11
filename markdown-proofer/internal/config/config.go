@@ -109,15 +109,22 @@ func Setup() (*AppConfig, error) {
 		proofingType = "standard"
 	}
 
-	// Determine input and output files
+	// Determine input file
 	inputFilePath := *inputFile
-	if inputFilePath == "" {
-		inputFilePath = config.InputFiles[0]
+	if inputFilePath == "" && !isCommandLineInput {
+		if len(config.InputFiles) > 0 {
+			inputFilePath = config.InputFiles[0]
+		} else {
+			return nil, fmt.Errorf("no input file specified")
+		}
 	}
 
-	outputFilePath := *outputFile
-	if outputFilePath == "" {
-		outputFilePath = config.OutputFile
+	// Determine output file or console output
+	var outputFilePath string
+	if proofingType == "git_full" || proofingType == "git_diff" {
+		outputFilePath = inputFilePath // In git mode, output goes to the original file
+	} else if *outputFile != "" {
+		outputFilePath = *outputFile // Use specified output file if provided
 	}
 
 	return &AppConfig{

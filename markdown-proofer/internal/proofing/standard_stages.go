@@ -1,6 +1,7 @@
 package proofing
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/phaynes/markdown-processing/markdown-proofer/internal/config"
@@ -21,9 +22,15 @@ func (s *StandardProofingStages) Initialize() error {
 }
 
 func (s *StandardProofingStages) PrepareContent() (string, error) {
+	if s.appConfig.ProofingType == "command_line" {
+		// For command line input, content is already in InputFile
+		return s.appConfig.InputFile, nil
+	}
+
+	// Read from the input file
 	content, err := os.ReadFile(s.appConfig.InputFile)
 	if err != nil {
-		return "", err
+		return "", fmt.Errorf("error reading input file: %v", err)
 	}
 	return string(content), nil
 }
@@ -33,12 +40,23 @@ func (s *StandardProofingStages) ExecuteProofing(content string, promptText stri
 }
 
 func (s *StandardProofingStages) ExecuteReview(content string, promptText string) (string, error) {
-	// Implement review logic here
 	return proofer.ReviewText(content, promptText, s.appConfig)
 }
 
 func (s *StandardProofingStages) HandleOutput(proofedContent string) error {
-	return os.WriteFile(s.appConfig.OutputFile, []byte(proofedContent), 0644)
+	if s.appConfig.OutputFile == "" {
+		// If no output file is specified, print to console
+		fmt.Println(proofedContent)
+		return nil
+	}
+
+	// Write to the output file
+	err := os.WriteFile(s.appConfig.OutputFile, []byte(proofedContent), 0644)
+	if err != nil {
+		return fmt.Errorf("error writing to output file: %v", err)
+	}
+	fmt.Printf("Proofed content written to %s\n", s.appConfig.OutputFile)
+	return nil
 }
 
 func (s *StandardProofingStages) Finalize() error {
