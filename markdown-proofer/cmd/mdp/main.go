@@ -1,17 +1,11 @@
 package main
 
 import (
-	"bufio"
-	"flag"
-	"fmt"
 	"log"
-	"os"
-	"strings"
 
 	"github.com/phaynes/markdown-processing/markdown-proofer/internal/config"
-	"github.com/phaynes/markdown-processing/markdown-proofer/internal/git"
 	"github.com/phaynes/markdown-processing/markdown-proofer/internal/prompt"
-	"github.com/phaynes/markdown-processing/markdown-proofer/internal/proofer"
+	"github.com/phaynes/markdown-processing/markdown-proofer/internal/proofing"
 )
 
 func main() {
@@ -20,87 +14,50 @@ func main() {
 		log.Fatalf("Error setting up configuration: %v", err)
 	}
 
-	var input string
-	if flag.NArg() > 0 {
-		// Use command-line input if provided
-		input = strings.Join(flag.Args(), " ")
-	} else if appConfig.InputFile != "" {
-		// Use input file from config if no command-line input
-		if appConfig.UseGit && internal.IsGitRepository() {
-			err := internal.AddAndCommitChanges(appConfig.InputFile)
-			if err != nil {
-				log.Fatalf("Error in git operations: %v", err)
-			}
-
-			if appConfig.ProofGitDiff {
-				input, err = internal.GetGitDiff(appConfig.InputFile)
-				if err != nil {
-					log.Fatalf("Error getting git diff: %v", err)
-				}
-			} else {
-				input, err = readInputFile(appConfig.InputFile)
-				if err != nil {
-					log.Fatalf("Error reading input file %s: %v", appConfig.InputFile, err)
-				}
-			}
-		} else {
-			input, err = readInputFile(appConfig.InputFile)
-			if err != nil {
-				log.Fatalf("Error reading input file %s: %v", appConfig.InputFile, err)
-			}
-		}
-	} else {
-		log.Fatalf("No input provided. Please provide text as a command-line argument or specify an input file in the config.")
+	stages, err := proofing.NewProofingStages(appConfig)
+	if err != nil {
+		log.Fatalf("Error creating proofing stages: %v", err)
 	}
 
+	// Initialize
+	if err := stages.Initialize(); err != nil {
+		log.Fatalf("Error initializing proofing stages: %v", err)
+	}
+
+	// Prepare Content
+	contentToProof, err := stages.PrepareContent()
+	if err != nil {
+		log.Fatalf("Error preparing content to proof: %v", err)
+	}
+
+	// Build proofing prompt
 	promptText, err := prompt.BuildProofingPrompt(appConfig.ProofingPrompts, appConfig.ProofType)
 	if err != nil {
 		log.Fatalf("Error building proofing prompt: %v", err)
 	}
 
-	// Handle additional information if required
-	for _, p := range appConfig.ProofingPrompts {
-		if p.Label == appConfig.ProofType && p.RequestAdditionalInfo {
-			if appConfig.AdditionalInfo == "" {
-				appConfig.AdditionalInfo = getAdditionalInfoFromUser()
-			}
-			promptText += "\nAdditional Information: " + appConfig.AdditionalInfo
-			break
-		}
-	}
-
-	proofedText, err := proofer.ProofText(input, promptText, appConfig)
-	if err != nil {
-		log.Fatalf("Error proofing text: %v", err)
-	}
-
-	// Only write to a file if explicitly specified, otherwise print to console
-	if appConfig.OutputFile != "" {
-		err = writeOutputFile(appConfig.OutputFile, proofedText)
-		if err != nil {
-			log.Fatalf("Error writing output file: %v", err)
-		}
-		fmt.Printf("Proofed content written to %s\n", appConfig.OutputFile)
+	// Execute Proofing or Review
+	var result string
+	if appConfig.Mode == "proof" {
+		result, err = stages.ExecuteProofing(contentToProof, promptText)
+	} else if appConfig.Mode == "review" {
+		result, err = stages.ExecuteReview(contentToProof, promptText)
 	} else {
-		fmt.Println(proofedText)
+		log.Fatalf("Invalid mode: %s. Must be 'proof' or 'review'", appConfig.Mode)
 	}
-}
 
-func readInputFile(filename string) (string, error) {
-	content, err := os.ReadFile(filename)
 	if err != nil {
-		return "", err
+		log.Fatalf("Error executing %s: %v", appConfig.Mode, err)
 	}
-	return string(content), nil
-}
 
-func writeOutputFile(filename string, content string) error {
-	return os.WriteFile(filename, []byte(content), 0644)
-}
+	// Handle Output
+	if err := stages.HandleOutput(result); err != nil {
+		log.Fatalf("Error handling output: %v", err)
+	}
 
-func getAdditionalInfoFromUser() string {
-	reader := bufio.NewReader(os.Stdin)
-	fmt.Print("Enter additional information for proofing: ")
-	info, _ := reader.ReadString('\n')
-	return strings.TrimSpace(info)
+	// Finalize
+	if err := stages.Finalize(); err != nil {
+		log.Fatalf("Error finalizing proofing: %v", err)
+	}
+
 }

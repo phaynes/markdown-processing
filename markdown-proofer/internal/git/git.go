@@ -1,150 +1,94 @@
 package git
 
 import (
-	"bufio"
 	"fmt"
 	"os"
 	"os/exec"
-	"strconv"
-	"strings"
 )
 
-func IsGitRepository() bool {
-	cmd := exec.Command("git", "rev-parse", "--is-inside-work-tree")
-	err := cmd.Run()
-	return err == nil
-}
-
-func AddAndCommitChanges(filepath string) error {
-	addCmd := exec.Command("git", "add", filepath)
-	err := addCmd.Run()
-	if err != nil {
-		return fmt.Errorf("error adding file to git: %v", err)
+func PrepareRepository(inputFile string) error {
+	if err := addAndCommit(inputFile, "Commit before proofing"); err != nil {
+		return fmt.Errorf("error in git add and commit: %v", err)
 	}
 
-	commitCmd := exec.Command("git", "commit", "-m", "Auto-commit before proofing")
-	err = commitCmd.Run()
-	if err != nil {
-		return fmt.Errorf("error committing changes: %v", err)
+	branchName := "ai-proof-branch"
+	if err := createAndCheckoutBranch(branchName); err != nil {
+		return fmt.Errorf("error creating and checking out branch: %v", err)
 	}
 
 	return nil
 }
 
-func GetChangedParagraphs(filepath string) ([]string, error) {
-	diffOutput, err := getGitDiff(filepath)
-	if err != nil {
-		return nil, err
+func GetContentToProof(inputFile string, proofGitDiff bool) (string, error) {
+	if proofGitDiff {
+		return getGitDiff(inputFile)
 	}
-
-	changedLines := extractChangedLines(diffOutput)
-	fileContent, err := readFile(filepath)
-	if err != nil {
-		return nil, err
-	}
-
-	return extractRelevantParagraphs(fileContent, changedLines), nil
-}
-
-func getGitDiff(filepath string) (string, error) {
-	cmd := exec.Command("git", "diff", "HEAD~1", "--", filepath)
-	output, err := cmd.Output()
-	if err != nil {
-		return "", fmt.Errorf("error getting git diff: %v", err)
-	}
-	return string(output), nil
-}
-
-func extractChangedLines(diff string) []int {
-	var changedLines []int
-	lineNum := 0
-	diffLines := strings.Split(diff, "\n")
-	for _, line := range diffLines {
-		if strings.HasPrefix(line, "@@") {
-			parts := strings.Split(line, " ")
-			if len(parts) > 2 {
-				lineInfo := strings.Split(parts[2], ",")
-				if len(lineInfo) > 0 {
-					lineNum, _ = strconv.Atoi(lineInfo[0][1:])
-				}
-			}
-		} else if strings.HasPrefix(line, "+") && !strings.HasPrefix(line, "+++") {
-			changedLines = append(changedLines, lineNum)
-		}
-		if !strings.HasPrefix(line, "-") {
-			lineNum++
-		}
-	}
-	return changedLines
-}
-
-func readFile(filepath string) (string, error) {
-	content, err := os.ReadFile(filepath)
+	content, err := os.ReadFile(inputFile)
 	if err != nil {
 		return "", fmt.Errorf("error reading file: %v", err)
 	}
 	return string(content), nil
 }
 
-func extractRelevantParagraphs(content string, changedLines []int) []string {
-	var relevantParagraphs []string
-	paragraphs := splitIntoParagraphs(content)
-
-	for _, paragraph := range paragraphs {
-		if paragraphContainsChangedLines(paragraph, changedLines) {
-			relevantParagraphs = append(relevantParagraphs, paragraph.text)
-		}
-	}
-
-	return relevantParagraphs
+func WriteProofedContent(inputFile string, proofedContent string) error {
+	return os.WriteFile(inputFile, []byte(proofedContent), 0644)
 }
 
-type Paragraph struct {
-	startLine int
-	endLine   int
-	text      string
+func CompleteWorkflow(inputFile string) error {
+	if err := addAndCommit(inputFile, "Proofing completed"); err != nil {
+		return fmt.Errorf("error in git add and commit after proofing: %v", err)
+	}
+
+	if err := checkoutBranch("main"); err != nil {
+		return fmt.Errorf("error checking out main branch: %v", err)
+	}
+
+	if err := mergeBranch("ai-proof-branch"); err != nil {
+		return fmt.Errorf("error merging branch: %v", err)
+	}
+
+	if err := deleteBranch("ai-proof-branch"); err != nil {
+		return fmt.Errorf("error deleting branch: %v", err)
+	}
+
+	return nil
 }
 
-func splitIntoParagraphs(content string) []Paragraph {
-	var paragraphs []Paragraph
-	scanner := bufio.NewScanner(strings.NewReader(content))
-	var currentParagraph strings.Builder
-	lineNum := 1
-	paragraphStart := 1
-
-	for scanner.Scan() {
-		line := scanner.Text()
-		if line == "" && currentParagraph.Len() > 0 {
-			paragraphs = append(paragraphs, Paragraph{
-				startLine: paragraphStart,
-				endLine:   lineNum - 1,
-				text:      strings.TrimSpace(currentParagraph.String()),
-			})
-			currentParagraph.Reset()
-			paragraphStart = lineNum + 1
-		} else {
-			currentParagraph.WriteString(line)
-			currentParagraph.WriteString("\n")
-		}
-		lineNum++
+func addAndCommit(filepath string, message string) error {
+	cmd := exec.Command("git", "add", filepath)
+	if err := cmd.Run(); err != nil {
+		return err
 	}
 
-	if currentParagraph.Len() > 0 {
-		paragraphs = append(paragraphs, Paragraph{
-			startLine: paragraphStart,
-			endLine:   lineNum - 1,
-			text:      strings.TrimSpace(currentParagraph.String()),
-		})
-	}
-
-	return paragraphs
+	cmd = exec.Command("git", "commit", "-m", message)
+	return cmd.Run()
 }
 
-func paragraphContainsChangedLines(p Paragraph, changedLines []int) bool {
-	for _, line := range changedLines {
-		if line >= p.startLine && line <= p.endLine {
-			return true
-		}
+func createAndCheckoutBranch(branchName string) error {
+	cmd := exec.Command("git", "checkout", "-b", branchName)
+	return cmd.Run()
+}
+
+func checkoutBranch(branchName string) error {
+	cmd := exec.Command("git", "checkout", branchName)
+	return cmd.Run()
+}
+
+func mergeBranch(branchName string) error {
+	cmd := exec.Command("git", "merge", branchName)
+	return cmd.Run()
+}
+
+func deleteBranch(branchName string) error {
+	cmd := exec.Command("git", "branch", "-d", branchName)
+	return cmd.Run()
+}
+
+func getGitDiff(inputFile string) (string, error) {
+	cmd := exec.Command("git", "diff", "HEAD", inputFile)
+	output, err := cmd.Output()
+	if err != nil {
+		return "", fmt.Errorf("error getting git diff: %v", err)
 	}
-	return false
+	return string(output), nil
 }

@@ -36,7 +36,7 @@ func ProofTextAnthropic(input string, prompt string, apiKey string) (string, err
 		Model:  "claude-3-5-sonnet-20240620",
 		System: prompt,
 		Messages: []Message{
-			{Role: "user", Content: "Follow instructions for the follow text without commentary unless requested:\n\n" + input},
+			{Role: "user", Content: "Please review and improve the following text:\n\n" + input},
 		},
 		MaxTokens: 1000,
 	}

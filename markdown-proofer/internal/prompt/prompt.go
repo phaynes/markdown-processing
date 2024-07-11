@@ -2,7 +2,6 @@ package prompt
 
 import (
 	"fmt"
-	"os"
 	"strings"
 
 	"github.com/phaynes/markdown-processing/markdown-proofer/internal/config"
@@ -20,43 +19,32 @@ func BuildProofingPrompt(prompts []config.ProofingPrompt, proofType string) (str
 func buildPrompt(prompt config.ProofingPrompt, allPrompts []config.ProofingPrompt) string {
 	var builder strings.Builder
 
-	// Prelude
-	builder.WriteString("You are an AI assistant specialised in proofreading and improving text. ")
-	builder.WriteString("Your task is to review and enhance the given text based on the following criteria and instructions. ")
+	builder.WriteString("You are an AI assistant specialized in proofreading and improving text. ")
+	builder.WriteString("Your task is to review and enhance the given text based on the following criteria and instructions:\n\n")
 
-	// Build the main prompt
 	builder.WriteString("Primary task: ")
 	builder.WriteString(prompt.Description)
 	builder.WriteString("\nPrimary criteria: ")
 	builder.WriteString(strings.Join(prompt.Criteria, ", "))
-	builder.WriteString("\n")
+	builder.WriteString("\n\n")
 
-	// Apply additional prompts if specified
 	for _, label := range prompt.ApplyToAll {
 		for _, additionalPrompt := range allPrompts {
 			if additionalPrompt.Label == label {
-				builder.WriteString("\nAdditional task: ")
+				builder.WriteString("Additional task: ")
 				builder.WriteString(additionalPrompt.Description)
 				builder.WriteString("\nAdditional criteria: ")
 				builder.WriteString(strings.Join(additionalPrompt.Criteria, ", "))
-				builder.WriteString("\n")
+				builder.WriteString("\n\n")
 			}
 		}
 	}
 
-	// Include file content if specified
-	if prompt.IncludeFile && prompt.FilePath != "" {
-		data, err := os.ReadFile(prompt.FilePath)
-		if err == nil {
-			builder.WriteString("\nAdditional context:\n")
-			builder.Write(data)
-			builder.WriteString("\n")
-		}
+	if prompt.RequestAdditionalInfo {
+		builder.WriteString("If you need any additional information or clarification to complete this task effectively, please state your questions clearly.\n\n")
 	}
 
-	// Request for additional information if specified
-	if prompt.RequestAdditionalInfo {
-		builder.WriteString("\nIf you need any additional information or clarification to complete this task effectively, please state your questions clearly.")
-	}
+	builder.WriteString("Please review and improve the provided text based on these instructions.")
+
 	return builder.String()
 }

@@ -6,16 +6,18 @@ import (
 	"github.com/phaynes/markdown-processing/markdown-proofer/internal/config"
 )
 
-func ProofText(input string, prompt string, appConfig *config.AppConfig) (string, error) {
-	fmt.Print("The AI prompt is: ")
-	fmt.Print(prompt)
-
+func ProofText(content string, promptText string, appConfig *config.AppConfig) (string, error) {
 	switch appConfig.AIProvider {
 	case "openai":
-		return ProofTextOpenAI(input, prompt, appConfig.OpenAIKey)
+		return ProofTextOpenAI(content, promptText, appConfig.APIKey)
 	case "anthropic":
-		return ProofTextAnthropic(input, prompt, appConfig.AnthropicKey)
+		return ProofTextAnthropic(content, promptText, appConfig.APIKey)
 	default:
-		return "", fmt.Errorf("Invalid AI provider: %s", appConfig.AIProvider)
+		return "", fmt.Errorf("unsupported AI provider: %s", appConfig.AIProvider)
 	}
+}
+
+func ReviewText(content string, promptText string, appConfig *config.AppConfig) (string, error) {
+	// For now, we'll use the same logic as ProofText
+	return ProofText(content, promptText, appConfig)
 }
