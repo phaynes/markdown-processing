@@ -6,11 +6,11 @@ ADHD is often characterised in the classroom by problematic behaviour, poor scho
 
 According to the United States Centers for Disease Control and Prevention [-@CDC2024], approximately 11.5% of U.S. children aged 3-17 have been diagnosed with ADHD. ADHD occurs in approximately 6–10% of Australian children and adolescents and 2–6% of adults [@graetz2001validity; @sawyer2018adequacy]. This high prevalence of ADHD challenges the notion that it is a disorder and suggests that it is a normal variation within the population.
 
-The NSW Department of Education [-@nsw_education_2021] provides evidence-based strategies for ADHD. Many other resources are available, for example, the United States, not-for-profit, Children and Adults with Attention-Deficit/Hyperactivity Disorder (CHADD), offers practical approaches to recognising ADHD in the classroom and various strategies for managing it [@chadd2023].
+The NSW Department of Education [-@nsw_education_2021] provides evidence-based strategies for ADHD. Many other resources are available; for example, in the United States, the not-for-profit organisation, Children and Adults with Attention-Deficit/Hyperactivity Disorder (CHADD), offers practical approaches to recognising ADHD in the classroom and various strategies for managing it [@chadd2023].
 
 # Strengths, Learning Needs, and Issues of Concern
 
-Understanding the strengths and learning needs of students with ADHD requires a multifaceted approach that incorporates neurobiological, cognitive, and educational perspectives. ADHD, characterized by symptoms of inattention, hyperactivity, and impulsivity, impacts students' learning experiences and outcomes [@faraone2019sleep].
+Understanding the strengths and learning needs of students with ADHD requires a multifaceted approach that incorporates neurobiological, cognitive, and educational perspectives. ADHD, characterised by symptoms of inattention, hyperactivity, and impulsivity, impacts students' learning experiences and outcomes [@faraone2019sleep].
 
 ## Strengths of Students with ADHD
 
