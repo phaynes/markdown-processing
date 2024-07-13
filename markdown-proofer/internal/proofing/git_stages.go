@@ -10,6 +10,15 @@ import (
 	"github.com/phaynes/markdown-processing/markdown-proofer/internal/proofer"
 )
 
+// NoChangesError is a custom error type for when there are no changes to proof
+type NoChangesError struct {
+	FileName string
+}
+
+func (e *NoChangesError) Error() string {
+	return fmt.Sprintf("The file '%s' is up to date. No changes need to be proofed.", e.FileName)
+}
+
 type GitProofingStages struct {
 	appConfig   *config.AppConfig
 	changes     []git.DiffChange
@@ -21,8 +30,7 @@ func NewGitProofingStages(appConfig *config.AppConfig) *GitProofingStages {
 }
 
 func (g *GitProofingStages) Initialize() error {
-	// No initialization needed for either case
-	return nil
+	return git.PrepareRepository(g.appConfig.InputFile)
 }
 
 func (g *GitProofingStages) PrepareContent() (string, error) {
@@ -39,7 +47,7 @@ func (g *GitProofingStages) prepareGitDiffContent() (string, error) {
 	}
 
 	if changes == nil || len(changes) == 0 {
-		return "", fmt.Errorf("no changes to proof")
+		return "", &NoChangesError{FileName: g.appConfig.InputFile}
 	}
 
 	g.changes = changes
@@ -119,6 +127,5 @@ func (g *GitProofingStages) handleFullFileOutput(proofedContent string) error {
 }
 
 func (g *GitProofingStages) Finalize() error {
-	// No finalization needed for either case
-	return nil
+	return git.CompleteWorkflow(g.appConfig.InputFile)
 }

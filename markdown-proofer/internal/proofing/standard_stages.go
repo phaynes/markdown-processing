@@ -44,18 +44,16 @@ func (s *StandardProofingStages) ExecuteReview(content string, promptText string
 }
 
 func (s *StandardProofingStages) HandleOutput(proofedContent string) error {
-	if s.appConfig.OutputFile == "" {
-		// If no output file is specified, print to console
-		fmt.Println(proofedContent)
-		return nil
+	if proofedContent == "" {
+		return nil // No changes to write
 	}
 
-	// Write to the output file
-	err := os.WriteFile(s.appConfig.OutputFile, []byte(proofedContent), 0644)
-	if err != nil {
-		return fmt.Errorf("error writing to output file: %v", err)
+	if s.appConfig.OutputFile != "" {
+		return os.WriteFile(s.appConfig.OutputFile, []byte(proofedContent), 0644)
 	}
-	fmt.Printf("Proofed content written to %s\n", s.appConfig.OutputFile)
+
+	// If no output file is specified, print to console
+	fmt.Println(proofedContent)
 	return nil
 }
 

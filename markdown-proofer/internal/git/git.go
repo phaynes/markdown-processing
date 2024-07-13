@@ -42,6 +42,81 @@ func GetGitDiff(inputFile string) ([]DiffChange, error) {
 
 	return changes, nil
 }
+func PrepareRepository(inputFile string) error {
+	if err := checkGitRepository(); err != nil {
+		return fmt.Errorf("not in a git repository: %v", err)
+	}
+
+	if err := addAndCommit(inputFile, "Commit before proofing"); err != nil {
+		return fmt.Errorf("error in git add and commit: %v", err)
+	}
+
+	branchName := "ai-proof-branch"
+	if err := createAndCheckoutBranch(branchName); err != nil {
+		return fmt.Errorf("error creating and checking out branch: %v", err)
+	}
+
+	return nil
+}
+
+func CompleteWorkflow(inputFile string) error {
+	if err := addAndCommit(inputFile, "Proofing completed"); err != nil {
+		return fmt.Errorf("error in git add and commit after proofing: %v", err)
+	}
+
+	if err := checkoutBranch("main"); err != nil {
+		return fmt.Errorf("error checking out main branch: %v", err)
+	}
+
+	if err := mergeBranch("ai-proof-branch"); err != nil {
+		return fmt.Errorf("error merging branch: %v", err)
+	}
+
+	if err := deleteBranch("ai-proof-branch"); err != nil {
+		return fmt.Errorf("error deleting branch: %v", err)
+	}
+
+	return nil
+}
+
+func checkGitRepository() error {
+	cmd := exec.Command("git", "rev-parse", "--is-inside-work-tree")
+	return cmd.Run()
+}
+
+func addAndCommit(filepath string, message string) error {
+	addCmd := exec.Command("git", "add", filepath)
+	if err := addCmd.Run(); err != nil {
+		return fmt.Errorf("git add failed: %v", err)
+	}
+
+	commitCmd := exec.Command("git", "commit", "-m", message)
+	if err := commitCmd.Run(); err != nil {
+		return fmt.Errorf("git commit failed: %v", err)
+	}
+
+	return nil
+}
+
+func createAndCheckoutBranch(branchName string) error {
+	cmd := exec.Command("git", "checkout", "-b", branchName)
+	return cmd.Run()
+}
+
+func checkoutBranch(branchName string) error {
+	cmd := exec.Command("git", "checkout", branchName)
+	return cmd.Run()
+}
+
+func mergeBranch(branchName string) error {
+	cmd := exec.Command("git", "merge", branchName)
+	return cmd.Run()
+}
+
+func deleteBranch(branchName string) error {
+	cmd := exec.Command("git", "branch", "-d", branchName)
+	return cmd.Run()
+}
 
 func parseDiff(diff string) ([]DiffChange, error) {
 	var changes []DiffChange

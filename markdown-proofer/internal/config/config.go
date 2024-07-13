@@ -99,9 +99,11 @@ func Setup() (*AppConfig, error) {
 
 	// Determine proofing type
 	var proofingType string
-	if isCommandLineInput {
+	if *lineRange != "" {
+		proofingType = "line_range"
+	} else if isCommandLineInput {
 		proofingType = "command_line"
-	} else if *useGit || aiConfig.UseGit {
+	} else if (*useGit || aiConfig.UseGit) && *lineRange == "" {
 		if *proofGitDiff || aiConfig.ProofGitDiff {
 			proofingType = "git_diff"
 		} else {
@@ -123,11 +125,10 @@ func Setup() (*AppConfig, error) {
 
 	// Determine output file or console output
 	var outputFilePath string
-	if proofingType == "git_full" || proofingType == "git_diff" {
-		outputFilePath = inputFilePath // In git mode, output goes to the original file
-	} else if *outputFile != "" {
+	if *outputFile != "" {
 		outputFilePath = *outputFile // Use specified output file if provided
 	}
+	// Note: If outputFilePath is empty, output will go to console
 
 	return &AppConfig{
 		Config:          config,

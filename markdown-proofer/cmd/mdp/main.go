@@ -1,7 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"log"
+	"os"
 
 	"github.com/phaynes/markdown-processing/markdown-proofer/internal/config"
 	"github.com/phaynes/markdown-processing/markdown-proofer/internal/prompt"
@@ -9,6 +11,8 @@ import (
 )
 
 func main() {
+	log.SetFlags(0) // Remove timestamp from log output
+
 	appConfig, err := config.Setup()
 	if err != nil {
 		log.Fatalf("Error setting up configuration: %v", err)
@@ -27,8 +31,13 @@ func main() {
 	// Prepare Content
 	contentToProof, err := stages.PrepareContent()
 	if err != nil {
+		if noChangesErr, ok := err.(*proofing.NoChangesError); ok {
+			fmt.Println(noChangesErr.Error())
+			os.Exit(0)
+		}
 		log.Fatalf("Error preparing content to proof: %v", err)
 	}
+
 
 	// Build proofing prompt
 	promptText, err := prompt.BuildProofingPrompt(appConfig.ProofingPrompts, appConfig.ProofType)
