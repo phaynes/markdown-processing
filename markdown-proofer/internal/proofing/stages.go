@@ -23,7 +23,7 @@ func NewProofingStages(appConfig *config.AppConfig) (ProofingStages, error) {
 	switch appConfig.ProofingType {
 	case "command_line":
 		return NewCommandLineProofingStages(appConfig), nil
-	case "git":
+	case "git_full", "git_diff":
 		return NewGitProofingStages(appConfig), nil
 	case "standard":
 		return NewStandardProofingStages(appConfig), nil

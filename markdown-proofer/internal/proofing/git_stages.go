@@ -19,7 +19,8 @@ func (g *GitProofingStages) Initialize() error {
 }
 
 func (g *GitProofingStages) PrepareContent() (string, error) {
-	return git.GetContentToProof(g.appConfig.InputFile, g.appConfig.AIConfig.ProofGitDiff)
+	isGitDiff := g.appConfig.ProofingType == "git_diff"
+	return git.GetContentToProof(g.appConfig.InputFile, isGitDiff)
 }
 
 func (g *GitProofingStages) ExecuteProofing(content string, promptText string) (string, error) {
@@ -27,7 +28,6 @@ func (g *GitProofingStages) ExecuteProofing(content string, promptText string) (
 }
 
 func (g *GitProofingStages) ExecuteReview(content string, promptText string) (string, error) {
-	// Implement review logic here
 	return proofer.ReviewText(content, promptText, g.appConfig)
 }
 
