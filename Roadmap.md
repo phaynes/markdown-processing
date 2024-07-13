@@ -43,3 +43,6 @@ May be handy to support the different roles so we can be clear.
 
 
 Summarisation of PDF's will be done separately using the Assistants API.
+
+
+Get some feed back on my update.

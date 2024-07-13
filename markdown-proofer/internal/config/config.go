@@ -43,6 +43,7 @@ type AppConfig struct {
 	OutputFile      string
 	ProofingType    string // "command_line", "git_full", "git_diff", or "standard"
 	APIKey          string // We'll store the actual API key here
+	LineRange       string // New field for line range
 
 }
 
@@ -56,6 +57,7 @@ func Setup() (*AppConfig, error) {
 	mode := flag.String("mode", "proof", "Mode of operation: 'proof' or 'review'")
 	inputFile := flag.String("input", "", "Input file to proof")
 	outputFile := flag.String("output", "", "Output file for proofed content")
+	lineRange := flag.String("n", "", "Line range to proof (e.g., '6-10' or '6')")
 	flag.Parse()
 
 	config, err := loadConfig(*configFile)
@@ -138,6 +140,7 @@ func Setup() (*AppConfig, error) {
 		OutputFile:      outputFilePath,
 		ProofingType:    proofingType,
 		APIKey:          apiKey,
+		LineRange:       *lineRange,
 	}, nil
 }
 func readAPIKey(filepath string) (string, error) {

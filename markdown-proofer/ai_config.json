@@ -3,6 +3,6 @@
   "openAI_key": "/Users/philiphaynes/devel/openai/api-key.txt",
   "anthropic_key": "/Users/philiphaynes/devel/claude/claude-key.txt",
   "proofing_prompts": "/Users/philiphaynes/devel/markdown/proofing-prompts.json",
-  "use_git": false,
+  "use_git": true,
   "proof_git_diff": false
 }
