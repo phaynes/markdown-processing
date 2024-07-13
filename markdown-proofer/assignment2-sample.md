@@ -12,7 +12,7 @@ Teachers play a critical role in identifying ADHD due to the demands of the scho
 
 Teachers should be aware of the high comorbidity rate of ADHD with autism spectrum disorder (ASD) [@lai2019prevalence]. These are distinct conditions, each requiring specific management practices, even if there is some overlap. This is also true for conditions such as intellectual disabilities and behavioural disorders like oppositional defiant disorder (ODD) [@AmericanPsychiatricAssociation2022], as well as anxiety and major depression [@arnold2011pediatric].
 
-People with ADHD, particularly adolescents, have a three times higher risk of drug use disorders [@deSchipper2015] and increased risks of sexually transmitted diseases, teenage pregnancies, and accidents and injuries [@leffa_adhd_2022].
+People with ADHD, prticularly adolescents, have a three times higher risk of drug use disorders [@deSchipper2015] and increased risks of sexually transmitted diseases, teenage pregnancies, and accidents and injuries [@leffa_adhd_2022].
 
 ADHD is associated with dysregulation of dopamine pathways in the brain, particularly in the prefrontal cortex and basal ganglia, which are critical for attention, impulse control, and executive function [@AmericanPsychiatricAssociation2022; @willcutt2005validity]. Executive functions (EF) are cognitive processes essential for controlling behaviour and achieving goals. Impairment in these areas affects working memory, making it difficult to follow instructions, complete tasks, and organise activities. Additionally, it impacts cognitive flexibility, planning, organisation, and emotional regulation [@willcutt2005validity].
 
