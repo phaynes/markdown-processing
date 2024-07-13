@@ -1,4 +1,4 @@
-This paper examines teacher beliefs and practices regarding the inclusion of learners diagnosed with Attention Deficit/Hyperactivity Disorder (ADHD). It aligns with @koutsoklenis2023's perspective that ADHD is a cognitive difference rather than a medical disorder. The paper assumes that accommodating learners with ADHD is part of normal teaching practice.
+This paper examines teacher beliefs and practices regarding the inclusion of learners diagnosed with Attention Deficit/Hyperactivity Disorder (ADHD). It aligns with @koutsoklenis2023 perspective that ADHD is a cognitive difference rather than a medical disorder. The paper assumes that accommodating learners with ADHD is part of normal teaching practice.
 
 # ADHD: How it Manifests
 
