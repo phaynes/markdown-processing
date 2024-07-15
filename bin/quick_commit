@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Check if a file path is provided
+if [ -z "$1" ]; then
+  echo "Usage: $0 path/to/specific_file"
+  exit 1
+fi
+
+# Commit the specific file directly with a standard commit message
+git commit -o "$1" -m "Update baseline"
+
+echo "Committed $1 with message 'Update baseline'"
