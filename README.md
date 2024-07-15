@@ -1,7 +1,7 @@
-# Automating the Preparation of Research Papers
+# Automating the Preparation of Publication Research Papers
 ## TLDR
-Through an integrated set of automation technologies for the preparation of research papers, this site aims to reduces paper preparation time by 25-50%, while also supporting the creation of publication grade documents.  Technologies to achieve this include:
-1. Submission ready PDF generation that includes full APAv7 referencing & style from markdown text.
+Through an integrated set of automation technologies, this project aims to reduce the preparation time of publication-grade, high-distinction-level research papers by 25-50%. The technologies developed to achieve this include:
+1. Submission generation from markdown text that includes full APAv7 referencing & style requirements.
 2. Highly customisable proof, review, and commenting on documents using multiple AI's either directly within an IDE (Zed), from command line, or as part of a CI/CD process. Larger changes are controled through git.
 3. Manage collected reference using an AI summarisation, and search.
 4. Securely collaborate in real time with other team members using Zed, and mesh networking.
