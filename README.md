@@ -1,62 +1,29 @@
-# Automating Preparation of Student Essays
+# Automating the Preparation of Research Papers
+## TLDR
+Through an integrated set of automation technologies for the preparation of research papers, this site aims to reduces paper preparation time by 25-50%, while also supporting the creation of publication grade documents.  Technologies to achieve this include:
+1. Submission ready PDF generation that includes full APAv7 referencing & style from markdown text.
+2. Highly customisable proof, review, and commenting on documents using multiple AI's either directly within an IDE (Zed), from command line, or as part of a CI/CD process. Larger changes are controled through git.
+3. Manage collected reference using an AI summarisation, and search.
+4. Securely collaborate in real time with other team members using Zed, and mesh networking.
+5. APAv7 styled markdown document viewers.
 
-## ** Welcome **
-Imagine arriving at your class, ready to dive into the semester, only to discover your assignments require extensive research and perfect ‘APA 7 referencing’. What are your first thought?
+Data is managed using either public or private git repositories.
 
-Quick examination of required reading and a few frantic Google searches later, elicits that mastery of APA 7 seems like a pricey and tedious endeavour. Initial attempts at formatting, alongside the collective groans of your peers, make it clear: this feels more like student torture than a learning exercise. It’s a requirement that distracts from the actual goal of learning and skill development.
+## Introduction
+Preparation of high-quality research papers is complex, but the nature of this complexity is of two kinds, being the:
+1. **Inherent difficulty** of subject being studied, key ideas, its nuances, and issues; and
+2. **Accidental difficulty** surrounding the size of a literature, understanding overall issues of the field, to then allow synthesis so research questions may be practically answered, then preparing a paper to a high written standard, with completely accurate referencing against required academic standards such as APAv7, and doing so in a timely way. For those coming from technical field, this is often particularly difficult.
 
-Despite this, traditional essay preparation remains a gatekeeper to the academic community. If you relish the idea of detailed, manual editing, this site might not be for you.
+By taking advantage of emerging technologies, this site aims to foster the development and distribution of automated methods to prepare research papers, without the accidental complexity typically associated with research paper preparation. In this way researchers are freed to spend the time available for a given topic actually on the subject of interest, or alternatively presenting insights gathered with the greatest level of clarity possible, without the time drain typically associated with preparing publication grade materials.
 
-On the other hand, if you want to craft outstanding essays with minimal hassle, welcome - we are here for you!
+In stating the above, the topic of preparing is itself a new field where the author also has plenty to learn - so feed back
 
-The mission of this site is to offer end-to-end automation for academic essay preparation so students can concentrate on understanding and engaging with their subjects, deliver high-quality essays, without the highly stressful last-minute scramble.
-
-Now if somehow, you are an Academic and reading this, fear not there is something for you too. Maybe trudging through and marking endless numbers of papers formatting, language, and stylistic errors is not for you. If so, this site aims to lift the academic bar for your students so they all submit papers that look like they were written by a Professor.
-
-
-
-# Hand Crafted Approach to Essay Preparation
-
-The traditional approach to essay preparation presents numerous challenges that can impede a student's learning experience and overall academic performance. Key issues include:
-
-1. **Continuous Modification**: The final product is often modified up until submission, making automation impossible. Links between different elements, such as in-text references and bibliography entries, must be manually verified for correctness, adding to the workload.
-
-2. **Time-Consuming Process**: Manual editing of essays is incredibly time-consuming. Students must repeatedly review their work to ensure all elements are correctly formatted and referenced, which detracts from the time they could spend on learning and understanding the content.
-
-3. **Human Error**: The likelihood of human error is significant. Students can easily overlook minor mistakes, such as misplaced commas in citations, incorrect page numbers, or slight deviations from the required formatting style. These errors can accumulate and negatively impact the final grade.
-
-4. **Consistency Issues**: Maintaining consistency throughout a lengthy document can be challenging. Inconsistent font sizes, heading styles, or reference formats can creep in, especially if multiple versions of the document are created over time.
-
-5. **Learning Curve**: Understanding and applying the intricate rules of referencing styles like APA 7 requires a steep learning curve. Students must invest considerable effort in learning these guidelines, which might not be directly related to their field of study.
-
-6. **Software Limitations**: While tools like Word templates, EndNote, and Mendeley exist to assist with formatting and referencing, they often have limitations. Templates might not cover all nuances of a specific style, and reference management tools may not fully integrate with the document's text, leading to discrepancies. Students often find that templates purporting to support APA 7 fall short, requiring manual interpretation of standards. Errors introduced during editing might go undetected until submission.
-
-7. **Stress and Anxiety**: The pressure to ensure all references and formatting are perfect can cause significant stress and anxiety. This added pressure can detract from the overall learning experience and reduce the quality of the student's work.
-
-8. **Repetition and Redundancy**: Each new assignment often requires re-entering references and re-formatting the document, leading to redundant work. This repetition can be frustrating and demotivating for students. Typically, the second assignment becomes a copy and edit of the previous one.
-
-9. **Lack of Skill Development**: Focusing heavily on manual editing and formatting can divert attention from developing critical thinking and writing skills. The primary purpose of assignments—to enhance understanding and articulation of the subject matter—can be overshadowed by formatting concerns.
-
-10. **Reference Management Challenges**: Reference management is known to be a significant challenge. Universities often provide tools like EndNote or Mendeley through the library, which, while helpful with formatting, only partially support full integrity between how a source is quoted in the text and its appearance in the reference list.
-
-By addressing these challenges through automation, students can focus more on the content and learning objectives of their assignments, leading to a more meaningful and productive educational experience.
-
-# The Approach
+## The Approach
 
 
-## Generation of Final Essay from Source Components
+## Technologies
 
+## Currently Tool Set
+AI automated proofing and review
 
-
-Research:
-
-
-Editing
-
-
-Proofing
-
-Review
-
-Production:
-Produce APAv7 Documents from markdown.
+## Tool Set in Preparation
