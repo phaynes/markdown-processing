@@ -4,6 +4,8 @@ Markdown provides an efficient method for preparing text as it can be transforme
 
 However, written work needs to be proofed and reviewed, and the types of tooling support available in word processors are not directly accessible. Instead, proofing the markdown text generally involves copying text segments into an AI chat engine, receiving corrections, and copying them back into the document. This approach is labour-intensive and typically involves respecifying common instructions such as "please proof this text using British English spelling with an active voice."
 
+The following is a specification to enable development of tooling for that.
+
 ## Overview
 
 This project aims to develop a command-line tool that automates the process of using AI to proof, review, and comment on markdown text. The tool will use AI technologies (primarily OpenAI, optionally Anthropic) and integrate with Git for version control.

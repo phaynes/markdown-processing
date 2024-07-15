@@ -7,6 +7,6 @@ if [ -z "$1" ]; then
 fi
 
 # Commit the specific file directly with a standard commit message
-git commit -o "$1" -m "Update baseline"
+git add "$1" && git commit -m "Updated baseline"
 
-echo "Committed $1 with message 'Update baseline'"
+echo "Committed $1 with message 'Updated baseline'"

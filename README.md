@@ -1,4 +1,4 @@
-# Automating the Preparation of Publication Research Papers
+# Automating the Preparation of Research Papers
 
 ## TLDR
 
@@ -19,7 +19,7 @@ The preparation of high-quality research papers is complex, involving two kinds 
 1. **Inherent difficulty:** The subject being studied, including its key ideas, nuances, and issues.
 2. **Accidental difficulty:** The extensive literature, understanding the overall issues in the field, synthesising information to answer research questions, preparing a paper to high standards, ensuring completely accurate referencing according to academic standards like APAv7, and doing this in a timely manner. This process is often particularly challenging for individuals from technical fields.
 
-By leveraging emerging technologies, this site aims to foster the development and distribution of automated methods for preparing research papers, thus alleviating the accidental complexities typically associated with this process. Researchers can then focus their available time on the subject of interest or present insights with the greatest clarity, without the time drain usually associated with preparing publication-grade materials.
+By leveraging emerging technologies, this project aims to foster the development and distribution of automated methods for preparing research papers, thus alleviating the accidental complexities typically associated with this process. Researchers can then focus their available time on the subject of interest or present insights with the greatest clarity, without the time drain usually associated with preparing publication-grade materials.
 
 Acknowledging that the topic of preparation itself is a new field, the author welcomes feedback.
 

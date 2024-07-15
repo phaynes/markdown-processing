@@ -33,7 +33,6 @@ type ProofingPrompt struct {
 }
 
 type AppConfig struct {
-	Config          *Config
 	AIConfig        *AIConfig
 	ProofingPrompts []ProofingPrompt
 	ProofType       string
@@ -59,11 +58,6 @@ func Setup() (*AppConfig, error) {
 	outputFile := flag.String("output", "", "Output file for proofed content")
 	lineRange := flag.String("n", "", "Line range to proof (e.g., '6-10' or '6')")
 	flag.Parse()
-
-	config, err := loadConfig(*configFile)
-	if err != nil {
-		return nil, fmt.Errorf("error loading configuration: %v", err)
-	}
 
 	aiConfig, err := loadAIConfig(*aiConfigFile)
 	if err != nil {
@@ -116,6 +110,10 @@ func Setup() (*AppConfig, error) {
 	// Determine input file
 	inputFilePath := *inputFile
 	if inputFilePath == "" && !isCommandLineInput {
+		config, err := loadConfig(*configFile)
+		if err != nil {
+			return nil, fmt.Errorf("error loading configuration: %v", err)
+		}
 		if len(config.InputFiles) > 0 {
 			inputFilePath = config.InputFiles[0]
 		} else {
@@ -131,7 +129,6 @@ func Setup() (*AppConfig, error) {
 	// Note: If outputFilePath is empty, output will go to console
 
 	return &AppConfig{
-		Config:          config,
 		AIConfig:        aiConfig,
 		ProofingPrompts: proofingPrompts,
 		ProofType:       *proofType,
