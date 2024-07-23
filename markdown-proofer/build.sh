@@ -1,4 +1,6 @@
 export GOOS=darwin
 export GOARCH=arm64
-go build -ldflags="-s -w" -o mdp ./cmd/mdp
+cd src
+go build -ldflags="-s -w" -o ../mdp ./cmd/mdp
+cd ..
 cp mdp ../bin/

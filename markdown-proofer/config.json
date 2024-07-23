@@ -1,5 +1,5 @@
 {
-  "input_files": ["essay-example.md"],
-  "output_file": "essay.pdf",
-  "bibliography": "essay-refs.bib"
+  "input_files": ["docs/essay-example.md"],
+  "output_file": "docs/essay.pdf",
+  "bibliography": "docs/essay-refs.bib"
 }
