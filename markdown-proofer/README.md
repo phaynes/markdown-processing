@@ -35,6 +35,10 @@ Move the `mdp` binary to a directory in your PATH to use it from anywhere.
 
 The system assumes you have access to [OpenAI](https://openai.com/index/openai-api/) and/or [Anthropic](https://www.anthropic.com/api) API keys.
 
+The path to the AI keys along with the set of AI prompt rules that `mdp` relies on is defined in the file `ai_config.json`. The path to these rules may be specified by the environment variable `MDP_AI_CONFIG`, or via the command line or the current directory is assumed.
+
+Finally the file `proofing-prompts.json` contains the set of AI prompts to be used to proof and / review your work. In setting up the proofing engine, this is the file that you need to modify to ensure your workd is proofed / reviewed to meet your needs.
+
 ## 2. Basic Usage
 
 The basic syntax for using `mdp` is:
@@ -60,7 +64,7 @@ If no input file is specified, `mdp` will use the first file listed in the `conf
 `mdp` supports the following command-line options:
 
 - `-config`: Path to the configuration file (default: `config.json`)
-- `-ai-config`: Path to the AI configuration file (default: `ai_config.json`)
+- `-ai-config`: Path to the AI configuration file.
 - `-type`: Type of proofing to perform (default: `basic-proof`)
 - `-ai`: AI provider to use (`openai` or `anthropic`)
 - `--use-git`: Use Git features

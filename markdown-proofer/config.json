@@ -1,5 +1,5 @@
 {
-  "input_files": ["2024-05-11-assignment2.md"],
-  "output_file": "assignment2.pdf",
-  "bibliography": "assignment2-refs.bib"
+  "input_files": ["essay-example.md"],
+  "output_file": "essay.pdf",
+  "bibliography": "essay-refs.bib"
 }
