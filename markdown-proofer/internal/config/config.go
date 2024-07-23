@@ -48,7 +48,7 @@ type AppConfig struct {
 
 func Setup() (*AppConfig, error) {
 	configFile := flag.String("config", "config.json", "Path to the configuration file")
-	aiConfigFile := flag.String("ai-config", "ai_config.json", "Path to the AI configuration file")
+	aiConfigFile := flag.String("ai-config", "", "Path to the AI configuration file")
 	proofType := flag.String("type", "basic-proof", "Type of proofing to perform")
 	aiProvider := flag.String("ai", "", "AI provider to use (openai or anthropic)")
 	useGit := flag.Bool("use-git", false, "Use git features")
@@ -59,7 +59,10 @@ func Setup() (*AppConfig, error) {
 	lineRange := flag.String("n", "", "Line range to proof (e.g., '6-10' or '6')")
 	flag.Parse()
 
-	aiConfig, err := loadAIConfig(*aiConfigFile)
+	// Determine AI config file location
+	aiConfigPath := determineAIConfigPath(*aiConfigFile)
+
+	aiConfig, err := loadAIConfig(aiConfigPath)
 	if err != nil {
 		return nil, fmt.Errorf("error loading AI configuration: %v", err)
 	}
@@ -141,6 +144,23 @@ func Setup() (*AppConfig, error) {
 		LineRange:       *lineRange,
 	}, nil
 }
+
+func determineAIConfigPath(cmdLineConfigPath string) string {
+
+	// Check command-line parameter
+	if cmdLineConfigPath != "" {
+		return cmdLineConfigPath
+	}
+
+	// Check environment variable
+	if envConfigPath := os.Getenv("MDP_AI_CONFIG"); envConfigPath != "" {
+		return envConfigPath
+	}
+
+	// Default to current directory
+	return "ai_config.json"
+}
+
 func readAPIKey(filepath string) (string, error) {
 	data, err := os.ReadFile(filepath)
 	if err != nil {

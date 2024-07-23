@@ -11,6 +11,7 @@ import (
 )
 
 func main() {
+
 	log.SetFlags(0) // Remove timestamp from log output
 
 	appConfig, err := config.Setup()
@@ -37,7 +38,6 @@ func main() {
 		}
 		log.Fatalf("Error preparing content to proof: %v", err)
 	}
-
 
 	// Build proofing prompt
 	promptText, err := prompt.BuildProofingPrompt(appConfig.ProofingPrompts, appConfig.ProofType)

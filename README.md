@@ -1,4 +1,12 @@
-# Automating the Preparation of Research Papers
+# Automating Publication Grade Technical Documentation
+
+Bid preparation
+Software development
+Creation of academic papers
+
+
+
+
 
 ## TLDR
 
@@ -22,6 +30,11 @@ The preparation of high-quality research papers is complex, involving two kinds 
 By leveraging emerging technologies, this project aims to foster the development and distribution of automated methods for preparing research papers, thus alleviating the accidental complexities typically associated with this process. Researchers can then focus their available time on the subject of interest or present insights with the greatest clarity, without the time drain usually associated with preparing publication-grade materials.
 
 Acknowledging that the topic of preparation itself is a new field, the author welcomes feedback.
+
+## Use Cases
+Research Papers
+
+
 
 ## The Approach
 

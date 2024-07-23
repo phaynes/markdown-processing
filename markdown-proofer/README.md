@@ -1,6 +1,6 @@
 # The Markdown Proofer (MDP) User Guide
 
-`mdp` is a command-line tool for proofing and reviewing markdown files. It can work with individual files, Git repositories, and specific line ranges within files. The system supports a range of customizable proofing modes, achieved by configuring a database of AI queries.
+`mdp` is a command-line tool for proofing and reviewing markdown files using AI API queries. It can work with text from the command line, individual files, file managed using git, as wells as specific line ranges within files. The system supports a range of customisable proofing modes, achieved by configuring a database of AI queries.
 
 This guide covers all the features and options available in `mdp`.
 
@@ -16,13 +16,14 @@ This guide covers all the features and options available in `mdp`.
 8. [Zed Integration](#zed-integration)
 9. [Output Handling](#output-handling)
 10. [Examples](#examples)
-11. [Troubleshooting](#troubleshooting)
+11. [Troubleshooting](#proofing-prompts)
+12. [Troubleshooting](#troubleshooting)
 
 ## 1. Installation
 
-MDP assumes that an M-series Mac is being used, although it is likely to work with a broader set of tools. Additionally, the system assumes both Git and Go are installed on the machine.
+`mdp` has been developed on a m-series Mac, although it is likely to work with a broader set of tools. Additionally, the system assumes both Git and Go are installed on the machine.
 
-To install MDP, clone the repository and build the binary:
+To install `mdp`, clone the repository and build the binary:
 
 ```bash
 git clone https://github.com/phaynes/markdown-processing.git
@@ -36,17 +37,17 @@ The system assumes you have access to [OpenAI](https://openai.com/index/openai-a
 
 ## 2. Basic Usage
 
-The basic syntax for using MDP is:
+The basic syntax for using `mdp` is:
 
 ```bash
 mdp [options] [input_file]
 ```
 
-If no input file is specified, MDP will use the first file listed in the `config.json` file.
+If no input file is specified, `mdp` will use the first file listed in the `config.json` file.
 
 ## 3. Proofing Modes
 
-MDP supports several proofing modes:
+`mdp` supports several proofing modes:
 
 - **Command Line Proofing**: Proofs text passed to it on the command line.
 - **Standard Proofing**: Proofs the entire file.
@@ -56,7 +57,7 @@ MDP supports several proofing modes:
 
 ## 4. Command-Line Options
 
-MDP supports the following command-line options:
+`mdp` supports the following command-line options:
 
 - `-config`: Path to the configuration file (default: `config.json`)
 - `-ai-config`: Path to the AI configuration file (default: `ai_config.json`)
@@ -71,7 +72,7 @@ MDP supports the following command-line options:
 
 ## 5. Configuration Files
 
-MDP uses two configuration files:
+`mdp` uses two configuration files:
 
 ### config.json
 
@@ -101,7 +102,7 @@ Contains AI-specific configuration:
 
 ## 6. Git Integration
 
-MDP can integrate with Git repositories:
+`mdp` can integrate with Git repositories:
 
 - Use `--use-git` to enable Git features.
 - Use `--proof-git-diff` along with `--use-git` to proof only the changes detected by Git.
@@ -119,11 +120,11 @@ Specify the provider using the `-ai` flag or in the `ai_config.json` file.
 
 ## 8. Zed Integration
 
-[Zed](https://zed.dev/) is a high-performance development environment with integrated support for markdown as well as mechanisms for automation of tasks.
+[Zed](https://zed.dev/) is a high-performance development environment with integrated support for markdown as well as mechanisms for task automation. Below is an example integration that enables `mdp` to be used directly from the development environment.
 
 ### Task Integration
 
-Below is an example definition for specifying MDP tasks within Zed:
+Below is an example definition for specifying `mdp` tasks within Zed:
 
 ```json
 [
@@ -160,7 +161,7 @@ Below is an example definition for specifying MDP tasks within Zed:
 
 ### Keystroke Bindings
 
-The following are example keystroke bindings for the MDP functions:
+The following are example Zed keystroke bindings for the `mdp` functions:
 
 ```json
 [
@@ -182,36 +183,42 @@ The following are example keystroke bindings for the MDP functions:
 ## 9. Output Handling
 
 - If an output file is specified with `-output`, the proofed content will be written to that file.
-- If no output file is specified, the proofed content will be printed to the console.
+- If no output file is specified, the proofed content will either be printed to the console, or for git or line range proofing, update the file itself.
 
 ## 10. Examples
 
-1. Standard proofing:
+1. Proofing text from the command line:
+   ```bash
+   mdp "Please proof ths text"
+   ```
+2. Standard proofing:
    ```bash
    mdp -input document.md
    ```
 
-2. Git full proofing:
+3. Git full proofing:
    ```bash
    mdp --use-git -input document.md
    ```
 
-3. Git diff proofing:
+4. Git diff proofing:
    ```bash
    mdp --use-git --proof-git-diff -input document.md
    ```
 
-4. Line range proofing:
+5. Line range proofing:
    ```bash
    mdp -input document.md -n 10-20
    ```
 
-5. Using a specific AI provider:
+6. Using a specific AI provider:
    ```bash
    mdp -input document.md -ai anthropic
    ```
 
-## 11. Troubleshooting
+## 11. Proofing Prompts
+
+## 12. Troubleshooting
 
 - Ensure your API keys are correctly set in the `ai_config.json` file.
 - When using Git features, make sure you're in a Git repository.
