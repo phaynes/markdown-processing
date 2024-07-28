@@ -81,8 +81,10 @@ Reducing the requirement for Type 2 cognitive functions involves prioritising ke
 **Classroom Environment Design:** @barrett2015clever report that effective classroom design can explain 16% of a 65% improvement in student performance. This is supported by @Fisher2011, emphasising the importance of inclusive design for both pedagogical and behavioural considerations.
 
 **Positive Behaviour for Learning:** To ensure students with ADHD are neither distracted by poor behaviour nor contributing to it:
-- **Clear Expectations:** Set clear, consistent expectations and provide visual schedules to help students understand routines. This approach can reduce anxiety and improve behaviour for students with disabilities.
-- **Reinforcement Strategies:** Use positive reinforcement to encourage desired behaviours. Implement a token economy system or reward chart to motivate students and reinforce positive actions [@cooper2007applied].
+
+1. **Clear Expectations:** Set clear, consistent expectations and provide visual schedules to help students understand routines. This approach can reduce anxiety and improve behaviour for students with disabilities.
+
+2. **Reinforcement Strategies:** Use positive reinforcement to encourage desired behaviours. Implement a token economy system or reward chart to motivate students and reinforce positive actions [@cooper2007applied].
 
 # ADHD Stakeholder Management Strategies
 
