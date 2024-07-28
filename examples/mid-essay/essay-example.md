@@ -1,10 +1,10 @@
 This paper examines teacher beliefs and practices regarding the inclusion of learners diagnosed with Attention Deficit/Hyperactivity Disorder (ADHD). It aligns with @koutsoklenis2023's perspective that ADHD is a cognitive difference rather than a medical disorder. The paper assumes that accommodating learners with ADHD is part of standard teaching practice.
 
-# ADHD: How it Manifests
+# ADHD: How It Manifests
 
 ADHD is often characterised in the classroom by problematic behaviour, poor school performance, inability to sit still, impatience, answering questions without raising hands, or daydreaming. Persistent patterns of inattention, disorganisation, and hyperactivity-impulsivity are typical [@AmericanPsychiatricAssociation2022]. ADHD significantly impacts academic performance due to difficulties in sustaining attention and completing tasks. Social interactions may also suffer, leading to issues in forming and maintaining relationships [@barkley2014]. ADHD symptoms vary across age groups as children’s brains develop [@biederman2000age].
 
-According to the United States Centers for Disease Control and Prevention [-@CDC2024], approximately 11.5% of U.S. children aged 3-17 have been diagnosed with ADHD. ADHD occurs in about 6–10% of Australian children and adolescents and 2–6% of adults [@graetz2001validity; @sawyer2018adequacy]. This high prevalence of ADHD challenges the notion that it is a disorder and suggests that it is a normal variation within the population.
+According to the United States Centers for Disease Control and Prevention [-@CDC2024], approximately 11.5% of U.S. children aged 3-17 have been diagnosed with ADHD. ADHD occurs in about 6-10% of Australian children and adolescents and 2-6% of adults [@graetz2001validity; @sawyer2018adequacy]. This high prevalence of ADHD challenges the notion that it is a disorder and suggests that it is a normal variation within the population.
 
 The NSW Department of Education [-@nsw_education_2021] provides evidence-based strategies for ADHD. Many other resources are available; for example, the United States, not-for-profit, Children and Adults with Attention-Deficit/Hyperactivity Disorder (CHADD), offers practical approaches to recognising ADHD in the classroom and various strategies for managing it [@chadd2023].
 
@@ -68,7 +68,7 @@ Achieving inclusive learning outcomes for ADHD students requires both differenti
 
 > **Teacher:** Prepare an explanation of hydrogen and oxygen for a Year 7 science student with low literacy and for a high IQ Year 12 student studying chemistry.
 
-> **Educational Robot:** For a Year 7 Science Student with Low Literacy: Hydrogen and oxygen are two very simple gases. Hydrogen is the lightest gas and is used in things like balloons and fuel. Oxygen is the gas we need to breathe to stay alive. Together, they make water, which we drink and use every day.
+> **Educational Robot:** For a Year 7 Science Student with Low Literacy: Hydrogen and oxygen are two simple gases. Hydrogen is the lightest gas and is used in things like balloons and fuel. Oxygen is the gas we need to breathe to stay alive. Together, they make water, which we drink and use every day.
 
 > **Educational Robot:** For a High IQ Year 12 Student Studying Chemistry: Hydrogen (H) is the lightest and most abundant element in the universe, with one proton and one electron, commonly found in molecular form (H₂). Oxygen (O), with eight protons and eight electrons, is a highly reactive non-metal and a crucial element for combustion and respiration processes. In its diatomic form (O₂), it supports aerobic life. The reaction of hydrogen with oxygen ($2H_2 + O_2 \rightarrow 2H_2O$) releases significant energy and forms water, illustrating a fundamental exothermic redox reaction.
 
