@@ -70,7 +70,7 @@ Achieving inclusive learning outcomes for ADHD students requires both differenti
 
 > **Educational Robot:** For a Year 7 Science Student with Low Literacy: Hydrogen and oxygen are two very simple gases. Hydrogen is the lightest gas and is used in things like balloons and fuel. Oxygen is the gas we need to breathe to stay alive. Together, they make water, which we drink and use every day.
 
-> **Educational Robot:** For a High IQ Year 12 Student Studying Chemistry: Hydrogen (H) is the lightest and most abundant element in the universe, with one proton and one electron, commonly found in molecular form (H₂). Oxygen (O), with eight protons and eight electrons, is a highly reactive non-metal and a crucial element for combustion and respiration processes. In its diatomic form (O₂), it supports aerobic life. The reaction of hydrogen with oxygen (2H₂ + O₂ → 2H₂O) releases significant energy and forms water, illustrating a fundamental exothermic redox reaction.
+> **Educational Robot:** For a High IQ Year 12 Student Studying Chemistry: Hydrogen (H) is the lightest and most abundant element in the universe, with one proton and one electron, commonly found in molecular form (H₂). Oxygen (O), with eight protons and eight electrons, is a highly reactive non-metal and a crucial element for combustion and respiration processes. In its diatomic form (O₂), it supports aerobic life. The reaction of hydrogen with oxygen  ($2H_2 + O_2 \rightarrow 2H_2O$) releases significant energy and forms water, illustrating a fundamental exothermic redox reaction.
 
 ### Neuropsychological Stimulation
 
@@ -81,8 +81,8 @@ Reducing the requirement for Type 2 cognitive functions involves prioritising ke
 **Classroom Environment Design:** @barrett2015clever report that effective classroom design can explain 16% of a 65% improvement in student performance. This is supported by @Fisher2011, emphasizing the importance of inclusive design for both pedagogical and behavioural considerations.
 
 **Positive Behaviour for Learning:** To ensure students with ADHD are neither distracted by poor behaviour nor contributing to it:
-1. **Clear Expectations:** Set clear, consistent expectations and provide visual schedules to help students understand routines. This approach can reduce anxiety and improve behaviour for students with disabilities.
-2. **Reinforcement Strategies:** Use positive reinforcement to encourage desired behaviours. Implement a token economy system or reward chart to motivate students and reinforce positive actions [@cooper2007applied].
+- **Clear Expectations:** Set clear, consistent expectations and provide visual schedules to help students understand routines. This approach can reduce anxiety and improve behaviour for students with disabilities.
+- **Reinforcement Strategies:** Use positive reinforcement to encourage desired behaviours. Implement a token economy system or reward chart to motivate students and reinforce positive actions [@cooper2007applied].
 
 # ADHD Stakeholder Management Strategies
 
