@@ -8,7 +8,7 @@ The following is a specification to enable development of tooling for that.
 
 ## Overview
 
-This project aims to develop a command-line tool that automates the process of using AI to proof, review, and comment on markdown text. The tool will use AI technologies (primarily OpenAI, optionally Anthropic) and integrate with Git for version control.
+This project aims to develop a command-line tool that automates the process of using AI to proof, review, and comment on markdown text. The tool will use AI technologies (primarily OpenAI and Anthropic) and integrate with Git for version control.
 
 ## Key Elements
 
@@ -25,7 +25,7 @@ This project aims to develop a command-line tool that automates the process of u
    - Advanced features may leverage remote tooling.
 
 4. **AI Technology**:
-   - Primarily OpenAI, with optional support for Anthropic.
+   - Primarily OpenAI, with support for Anthropic.
 
 5. **Tool Binaries**:
    - **mdp** (markdown proof): Fully updates the markdown document without user review.

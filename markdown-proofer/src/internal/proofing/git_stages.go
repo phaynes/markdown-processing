@@ -30,6 +30,16 @@ func NewGitProofingStages(appConfig *config.AppConfig) *GitProofingStages {
 }
 
 func (g *GitProofingStages) Initialize() error {
+	// Check if there are any changes to commit
+	changes, err := git.GetGitDiff(g.appConfig.InputFile)
+	if err != nil {
+		return fmt.Errorf("error checking for changes: %v", err)
+	}
+
+	if len(changes) == 0 {
+		// No changes to commit, so we can skip the PrepareRepository step
+		return nil
+	}
 	return git.PrepareRepository(g.appConfig.InputFile)
 }
 

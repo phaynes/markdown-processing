@@ -21,7 +21,7 @@ func GetGitDiff(inputFile string) ([]DiffChange, error) {
 	err := checkCmd.Run()
 	if err == nil {
 		// No changes
-		return nil, nil
+		return []DiffChange{}, nil
 	}
 
 	// If there are changes, get the diff
