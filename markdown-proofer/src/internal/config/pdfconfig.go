@@ -5,8 +5,6 @@ import (
 	"flag"
 	"fmt"
 	"os"
-
-	"github.com/unidoc/unipdf/v3/common/license"
 )
 
 type PDFConfig struct {
@@ -17,10 +15,6 @@ type PDFConfig struct {
 }
 
 func SetupPDFConfig() (*PDFConfig, error) {
-	err := license.SetMeteredKey("de9fa24d31a17f487034f7cc6f01c481a9b298366f7e72f8f14605afb1d38cc7")
-	if err != nil {
-		panic(err) // Handle error appropriately in production code
-	}
 	pdfConfigFile := flag.String("pdf-config", "pdfconfig.json", "Path to the PDF configuration file")
 	flag.Parse()
 

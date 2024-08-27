@@ -32,6 +32,8 @@ func main() {
 		if !info.IsDir() && strings.ToLower(filepath.Ext(path)) == ".pdf" {
 			if err := processPDF(path, pdfConfig); err != nil {
 				log.Printf("Error processing %s: %v", path, err)
+				// Continue processing other files
+				return nil
 			}
 		}
 		return nil
