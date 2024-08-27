@@ -1,0 +1,5 @@
+{
+  "input_directory": "/Users/philiphaynes/devel/markdown/markdown-proofer/test/pdf",
+  "output_directory": "/Users/philiphaynes/devel/markdown/markdown-proofer/test/md",
+  "summary_criteria": "Focus on the main findings and methodology of the paper"
+}

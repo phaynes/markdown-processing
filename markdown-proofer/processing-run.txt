@@ -1,0 +1,317 @@
+philiphaynes@MacBook-Pro markdown-proofer % ./pdf2md -pdf-config pdfconfig-test.json
+Response: {
+  "title": "A Comprehensive Examination of Reading Heterogeneity in Students with High Functioning Autism: Distinct Reading Profiles and Their Relation to Autism Symptom Severity",
+  "authors": "Nancy S. McIntyre, Emily J. Solari, Ryan P. Grimm, Lindsay E. Lerro, Joseph E. Gonzales, Peter C. Mundy",
+  "year": 2017
+}Processed: /Users/philiphaynes/devel/markdown/markdown-proofer/test/pdf/s10803-017-3029-0.pdf -> /Users/philiphaynes/devel/markdown/markdown-proofer/test/md/2017-(McIntyre)-A-Comprehensive-Examination-of-Reading-Heterogeneity-in-Stud.md
+philiphaynes@MacBook-Pro markdown-proofer % ./pdf2md -pdf-config pdfconfig-test.json
+Response: {
+  "title": "A Comprehensive Examination of Reading Heterogeneity in Students with High Functioning Autism: Distinct Reading Profiles and Their Relation to Autism Symptom Severity",
+  "authors": "Nancy S. McIntyre, Emily J. Solari, Ryan P. Grimm, Lindsay E. Lerro, Joseph E. Gonzales, Peter C. Mundy",
+  "year": 2017
+}Processed: /Users/philiphaynes/devel/markdown/markdown-proofer/test/pdf/s10803-017-3029-0.pdf -> /Users/philiphaynes/devel/markdown/markdown-proofer/test/md/2017-(McIntyre)-A-Comprehensive-Examination-of-Reading-Heterogeneity-in-Stud.md
+philiphaynes@MacBook-Pro markdown-proofer % ./pdf2md -pdf-config pdfconfig.json
+Response: {
+  "title": "Reframing neurodiversity in engineering education",
+  "authors": "Maria Chrysochoou, Arash E. Zaghi, Connie Mosher Syharat",
+  "year": 2022
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/10389866.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2022-(Chrysochoou)-Reframing-neurodiversity-in-engineering-education.md
+Response: {
+  "title": "Effective inclusion practices for neurodiverse children and adolescents in informal STEM learning: a systematic review protocol",
+  "authors": "Ronda J. Jenson, Michele S. Lee, Arden D. Day, Amy E. Hughes, Emma E. Maroushek, Kelly D. Roberts",
+  "year": 2023
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/13643_2023_Article_2278.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2023-(Jenson)-Effective-inclusion-practices-for-neurodiverse-children-and.md
+Response: {
+  "title": "Autism: Implications for Inclusive Education with respect to Software Engineering",
+  "authors": "Sylvia Stuurman, Harrie J.M. Passier, Frédérique Geven, Erik Barendsen",
+  "year": 2019
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/3375258.3375261.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2019-(Stuurman)-Autism-Implications-for-Inclusive-Education-with-respect-to.md
+Response: {
+  "title": "ADHD and Technology Research – Investigated by Neurodivergent Readers",
+  "authors": "Katta Spiel, Eva Hornecker, Rua M. Williams, Judith Good",
+  "year": 2022
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/3491102.3517592.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2022-(Spiel)-ADHD-and-Technology-Research-–-Investigated-by-Neurodiverg.md
+Response: {
+  "title": "Meeting up in broken word/times: communication, temporality and pace in neuromixed writing",
+  "authors": "Hanna Bertilsdotter Rosqvist, Elisabeth Hjorth, Anna Nygren",
+  "year": 2023
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/407.full.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2023-(Rosqvist)-Meeting-up-in-broken-wordtimes-communication,-temporality-an.md
+Warning: error enhancing metadata: error executing AI request: ChatCompletion error: error, status code: 429, message: Request too large for gpt-4o in organization org-DZ1hS8J9bax3zSUICxmhTzUP on tokens per min (TPM): Limit 800000, Requested 1246311. The input or output tokens must be reduced in order to run successfully. Visit https://platform.openai.com/account/rate-limits to learn more.. Using original metadata.
+Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/978-3-030-88538-0.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/0-(Authors)-Unknown-Title.md
+Warning: error enhancing metadata: error executing AI request: ChatCompletion error: error, status code: 400, message: Invalid 'messages[1].content': string too long. Expected a string with maximum length 1048576, but got a string with length 2833421 instead.. Using original metadata.
+Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/978-3-319-91280-6_102248.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/0-(Authors)-Unknown-Title.md
+Response: {
+  "title": "Reaching and Teaching Neurodivergent Learners in STEM: Strategies for Embracing Uniquely Talented Problem Solvers",
+  "authors": "Jodi Asbell-Clarke",
+  "year": "2024"
+}Error parsing JSON: json: cannot unmarshal string into Go struct field Metadata.year of type int
+Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/9781003434610_previewpdf.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/0-(Authors)-Unknown-Title.md
+Response: {
+  "title": "Writing Science: Transforming Students’ Science Writing by Tapping into Writing Instruction Scholarship and Best Practices",
+  "authors": "Bethann Garramon Merkle",
+  "year": 2019
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/Bulletin Ecologic Soc America - 2019 - Merkle - Writing Science  Transforming Students  Science Writing by Tapping into.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2019-(Merkle)-Writing-Science-Transforming-Students’-Science-Writing-by.md
+Response: {
+  "title": "Using Self-Regulated Strategy Development for Written Expression with Students with Attention Deficit Hyperactivity Disorder",
+  "authors": "Robert Reid, Jessica L. Hagaman, Steve Graham",
+  "year": 2014
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/EJ1039823.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2014-(Reid)-Using-Self-Regulated-Strategy-Development-for-Written-Expres.md
+Response: {
+  "title": "Supporting Students with an Autism Spectrum Disorder in Engineering: K-12 and Beyond",
+  "authors": "Jennifer L. Kouo, Sarah Morton, Alexis E. Hogan, Jay Gregorio",
+  "year": 2021
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/EJ1320882.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2021-(Kouo)-Supporting-Students-with-an-Autism-Spectrum-Disorder-in-Engi.md
+Response: {
+  "title": "Improving the Writing Performance of High School Students with Attention Deficit/Hyperactivity Disorder and Writing Difficulties",
+  "authors": "Laura Thompson Jacobson, Robert Reid",
+  "year": 2012
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/Improving the Writing Performance of High School Students with Attention Deficit Hyperactivity Disorder and Writing Difficulties.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2012-(Jacobson)-Improving-the-Writing-Performance-of-High-School-Students-wi.md
+Response: Thank you for your interest in submitting to the Journal of Postsecondary Education and Disability (JPED). Below are the key sections and instructions you will need to follow for successful manuscript submission and preparation.
+
+### Purpose
+The **Journal of Postsecondary Education and Disability (JPED)** aims to publish research and best practices related to disabled college students, disability services offices, disability educators, and disability studies within higher education institutions.
+
+### Review Process
+The JPED is a peer-reviewed journal using a double-blind review process. Ensure adherence to the submission guidelines to facilitate a smoother review process.
+
+### Manuscript Topics and Types
+#### Research Articles
+Manuscripts should adhere to standards described in the APA publication manual (7th edition) Sections 1.1-1.8. Acceptable formats include quantitative, qualitative, mixed methods, replication studies, meta-analyses, literature reviews, theoretical articles, and methodological articles.
+
+- **Page Length**: Up to 35 pages; typically 25-30 pages.
+
+#### Practice Briefs
+Manuscripts should describe innovative programs, services, or best practices, organized with specific headings such as relevant literature, the setting, depiction of the problem, practice description, outcomes, and implications.
+
+- **Page Length**: Up to 15 pages; typically 8-12 pages.
+
+#### Media Reviews
+Provide a review of resources such as books, films, or online content. Reviews should encompass an overview, an evaluation of strengths, and recommendations regarding useful audiences.
+
+- **Word Count**: 750-1250 words.
+
+### Manuscript Preparation
+#### General APA Formatting (7th Edition)
+1. **Title Page**: Include the manuscript title (maximum 12 words).
+2. **Abstract**: 250 words maximum, with 3-5 keywords listed below.
+3. **Body**: Double-spaced, 12-point Times New Roman font, one-inch margins.
+4. **Headings**: Use appropriate APA heading levels for organization (APA 2.27).
+5. **Tables and Figures**: Follow APA sections 7.20+ for tables and figures. Place them after the references within the manuscript.
+6. **References**: Ensure all references are cited in-text and formatted according to APA (sections 9-11).
+
+### Key Formatting Considerations
+#### Bias-Free Language
+Discuss language choices related to disability clearly within the manuscript, using either person-first or identity-first language based on the context and participant preference.
+
+#### Masking Author Identity
+Remove any information that could reveal the identity of the authors in the manuscript to maintain the double-blind review process.
+
+### Submission Process
+Submit manuscripts via the Scholastica platform:
+1. **Create an Account**: Sign up on Scholastica if you don’t already have an account.
+2. **Enter Metadata**: Provide the title, abstract, and keywords.
+3. **Upload Files**: Submit the masked manuscript, cover letter, and any additional tables, figures, or supplementary materials.
+4. **Review and Confirm**: Ensure all fields are filled correctly, then confirm and submit.
+
+### Upon Acceptance
+Authors will need to provide:
+1. **Author Biographies**: 40-50 word bios for each author.
+2. **Signed Copyright Transfer Form**: Instructions will be sent by the editorial team.
+
+### Special Issues
+The JPED occasionally publishes special issues focused on specific themes. For inquiries or proposals related to special issues, contact the editorial team at jped@ahead.org.
+
+### Contact and Editorial Team
+For any questions, refer to the Scholastica Author Guide or contact the JPED editorial team at jped@ahead.org. The editorial and review teams are composed of international experts in disability and higher education, ensuring thorough and developmental feedback on submitted manuscripts.
+
+### References
+- **American Psychological Association. (2020).** Publication manual of the American Psychological Association (7th ed.). https://doi.org/10.1037/0000165-000
+- **Madaus, J. W., Dukes, L. L. III, et al. (2020).** Research guidelines for higher education and disability. Journal of Postsecondary Education and Disability, 33(4), 319-338.
+
+By following these guidelines, you ensure that your manuscript adheres to JPED’s standards and expedites the review and publication process.Error parsing JSON: invalid character 'T' looking for beginning of value
+Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/JPED_37_1_FULL_DOC.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/0-(Authors)-Unknown-Title.md
+Response: {
+  "title": "Neurodivergent literacies: exploring autistic adults’ ‘ruling passions’ and embracing neurodiversity through classroom literacies",
+  "authors": "Chris Bailey",
+  "year": 2023
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/Literacy - 2023 - Bailey - Neurodivergent literacies   exploring autistic adults   ruling passions  and embracing.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2023-(Bailey)-Neurodivergent-literacies-exploring-autistic-adults’-‘ru.md
+Response: {
+  "title": "National STEM School Education Strategy, 2016 – 2026",
+  "authors": "Australian Education Ministers",
+  "year": 2015
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/National STEM School Education Strategy.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2015-(Ministers)-National-STEM-School-Education-Strategy,-2016-–-2026.md
+Response: {
+  "title": "\"Academia, as a whole, is structured entirely without any consideration for neurodivergency,\" and other things neurodivergent students want you to know",
+  "authors": "Liam G. McDermott, Nazeer A. Mosley",
+  "year": 2023
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/PERC2023_McDermott-1.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2023-(McDermott)-Academia,-as-a-whole,-is-structured-entirely-without-any-con.md
+Response: {
+  "title": "Conceptualisations of Neurodiversity and Barriers to Inclusive Pedagogy in Schools: A Perspective Article",
+  "authors": "Anna Cook",
+  "year": 2024
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/Research in Spec Educ Needs - 2024 - Cook - Conceptualisations of neurodiversity and barriers to inclusive pedagogy in.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2024-(Cook)-Conceptualisations-of-Neurodiversity-and-Barriers-to-Inclusi.md
+Warning: error enhancing metadata: error executing AI request: ChatCompletion error: error, status code: 400, message: This model's maximum context length is 128000 tokens. However, your messages resulted in 167824 tokens. Please reduce the length of the messages.. Using original metadata.
+Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/S.T.E.M_Education_Strategies_for_TeachinChpater6.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/0-(Authors)-Unknown-Title.md
+Response: {
+  "title": "STEM Faculty Experience Teaching Students with Autism",
+  "authors": "Solvegi Shmulsky, Ken Gobbo, Michelle W. Bower",
+  "year": 2019
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/STEMFacultyExperienceTeachingStudentsWithAutism.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2019-(Shmulsky)-STEM-Faculty-Experience-Teaching-Students-with-Autism.md
+Response: {
+  "title": "Writing experiences of neurodiverse students in graduate STEM programs",
+  "authors": "Connie Mosher Syharat, Alexandra Hain, Arash E. Zaghi, Thomas Deans",
+  "year": 2023
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/Writing_experiences_of_neurodiverse_students_in_gr.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2023-(Syharat)-Writing-experiences-of-neurodiverse-students-in-graduate-STE.md
+Response: {
+  "title": "Practice-Based Professional Development for Self-Regulated Strategy Development Writing Instruction With Secondary Teachers",
+  "authors": "Amber B. Ray, Erin FitzPatrick",
+  "year": 2022
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/b-ray-fitzpatrick-2022-practice-based-professional-development-for-self-regulated-strategy-development-writing.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2022-(Ray)-Practice-Based-Professional-Development-for-Self-Regulated-S.md
+Response: {
+  "title": "Cognitive Profile in Autism and ADHD: A Meta-Analysis of Performance on the WAIS-IV and WISC-V",
+  "authors": "Alexander C. Wilson",
+  "year": 2024
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/background/2023-wilson-cognitive profile in autism and adhd.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2024-(Wilson)-Cognitive-Profile-in-Autism-and-ADHD-A-Meta-Analysis-of-Perf.md
+Response: {
+  "title": "Framework for Accessible and Inclusive Teaching Materials for Statistics and Data Science Courses",
+  "authors": "Mine Dogucu, Alicia A. Johnson, Miles Ott",
+  "year": 2023
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/background/Framework for Accessible and Inclusive Teaching Materials for Statistics and Data Science Courses.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2023-(Dogucu)-Framework-for-Accessible-and-Inclusive-Teaching-Materials-fo.md
+Response: {
+  "title": "Neurodiversity as a Competitive Advantage",
+  "authors": "Robert D. Austin, Gary P. Pisano",
+  "year": 2017
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/background/Neurodiversity Is a Competitive Advantage.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2017-(Austin)-Neurodiversity-as-a-Competitive-Advantage.md
+Response: {
+  "title": "Improving Concentration and Academic Performance of a Mathematically Talented Student with ASD/ADHD: An Enrichment Program",
+  "authors": "Kun-Ming Lien, Ching-Chih Kuo, Hung-Lun Pan",
+  "year": 2023
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/education-13-00588-v2.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2023-(Lien)-Improving-Concentration-and-Academic-Performance-of-a-Mathem.md
+Response: {
+  "title": "Reframing neurodiversity in engineering education",
+  "authors": "Maria Chrysochoou, Arash E. Zaghi, Connie Mosher Syharat",
+  "year": 2022
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/feduc-07-995865.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2022-(Chrysochoou)-Reframing-neurodiversity-in-engineering-education.md
+Response: {
+  "title": "Writing experiences of neurodiverse students in graduate STEM programs",
+  "authors": "Connie Mosher Syharat, Alexandra Hain, Arash E. Zaghi, Thomas Deans",
+  "year": 2023
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/feduc-08-1295268.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2023-(Syharat)-Writing-experiences-of-neurodiverse-students-in-graduate-STE.md
+Response: {
+  "title": "Addressing the Academic Needs of Adolescents With Autism Spectrum Disorder in Secondary Education",
+  "authors": "Veronica P. Fleury, Susan Hedges, Kara Hume, Diane M. Browder, Julie L. Thompson, Kathy Fallin, Farah El Zein, Colleen Klein Reutebuch, Sharon Vaughn",
+  "year": 2014
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/fleury-et-al-2014-addressing-the-academic-needs-of-adolescents-with-autism-spectrum-disorder-in-secondary-education.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2014-(Fleury)-Addressing-the-Academic-Needs-of-Adolescents-With-Autism-Spe.md
+Response: {
+  "title": "Supporting neurodivergent talent: ADHD, autism, and dyslexia in physics and space sciences",
+  "authors": "Niescja E. Turner, Heather Haynes Smith",
+  "year": 2023
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/fphy-11-1223966.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2023-(Turner)-Supporting-neurodivergent-talent-ADHD,-autism,-and-dyslexia.md
+Response: {
+  "title": "Experiences of Neurodivergent Students in Graduate STEM Programs",
+  "authors": "Connie Mosher Syharat, Alexandra Hain, Arash E. Zaghi, Rachael Gabriel, Catherine G. P. Berdanier",
+  "year": 2023
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/fpsyg-14-1149068.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2023-(Syharat)-Experiences-of-Neurodivergent-Students-in-Graduate-STEM-Prog.md
+Response: {
+  "title": "How teachers provide writing instruction to autistic students: A pilot study",
+  "authors": "Kristie Asaro-Saddler, Elizabeth G. Finnegan",
+  "year": 2024
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/key/1-s2.0-S1750946724000990-main.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2024-(Asaro-Saddler)-How-teachers-provide-writing-instruction-to-autistic-student.md
+Response: {
+  "title": "Systematic Review of Evidence-based Interventions in Science for Students with Autism Spectrum Disorders",
+  "authors": "Juliet Hart Barnett, Ashleigh J. Frankel, Kimberly W. Fisher",
+  "year": "2018"
+}Error parsing JSON: json: cannot unmarshal string into Go struct field Metadata.year of type int
+Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/key/Barnett-SystematicReviewEvidencebased-2018.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/0-(Authors)-Unknown-Title.md
+Response: {
+  "title": "Teaching Statistics to Struggling Students: Lessons Learned from Students with LD, ADHD, and Autism",
+  "authors": "",
+  "year": 2022
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/key/Teaching Statistics to Struggling Students: Lessons Learned from Students with LD, ADHD, and Autism.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2022-(Authors)-Teaching-Statistics-to-Struggling-Students-Lessons-Learned-f.md
+Response: {
+  "title": "Reading and Writing Skills in Adolescents With Autism Spectrum Disorder Without Intellectual Disability",
+  "authors": "Inmaculada Baixauli, Belen Rosello, Carmen Berenguer, Montserrat Téllez de Meneses, Ana Miranda",
+  "year": 2021
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/key/fpsyg-12-646849.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2021-(Baixauli)-Reading-and-Writing-Skills-in-Adolescents-With-Autism-Spectr.md
+Response: {
+  "title": "Strategies in supporting inclusive education for autistic students—A systematic review of qualitative research results",
+  "authors": "Linda Petersson-Bloom, Mona Holmqvist",
+  "year": "2022"
+}Error parsing JSON: json: cannot unmarshal string into Go struct field Metadata.year of type int
+Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/key/petersson-bloom-holmqvist-2022-strategies-in-supporting-inclusive-education-for-autistic-students-a-systematic-review.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/0-(Authors)-Unknown-Title.md
+Response: {
+  "title": "Writing Interventions for Individuals with Autism Spectrum Disorder: A Research Synthesis",
+  "authors": "Amy L. Accardo, Elizabeth G. Finnegan, S. Jay Kuder, Estyr M. Bomgardner",
+  "year": 2020
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/key/s10803-019-03955-9.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2020-(Accardo)-Writing-Interventions-for-Individuals-with-Autism-Spectrum-D.md
+Response: {
+  "title": "Strengths-Based Approaches to Autism Language and Communications Research: Where Are We?",
+  "authors": "Grace Joplin Ferreira, Jay Getten, Henri Pesonen",
+  "year": 2024
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/key/s40489-024-00455-0.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2024-(Ferreira)-Strengths-Based-Approaches-to-Autism-Language-and-Communicat.md
+Response: {
+  "title": "Writing Instruction in Chemistry Classes: Developing Prompts and Rubrics",
+  "authors": "Kayla Logan, Lee Mountain",
+  "year": 2018
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/logan-mountain-2018-writing-instruction-in-chemistry-classes-developing-prompts-and-rubrics.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2018-(Logan)-Writing-Instruction-in-Chemistry-Classes-Developing-Prompts.md
+Response: {
+  "title": "The write stuff",
+  "authors": "Michelle Francl",
+  "year": 2014
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/nchem.1985.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2014-(Francl)-The-write-stuff.md
+Response: {
+  "title": "STEM for Everyone: A Mixed Methods Approach to the Conception and Implementation of an Evaluation Process for STEM Education Programs for Students With Disabilities",
+  "authors": "Amy Jane Griffiths, John Brady, Nicholas Riley, James Alsip, Vanessa Trine, Lauren Gomez",
+  "year": 2021
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/nup/feduc-05-545701.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2021-(Griffiths)-STEM-for-Everyone-A-Mixed-Methods-Approach-to-the-Conception.md
+Response: {
+  "title": "A Comprehensive Examination of Reading Heterogeneity in Students with High Functioning Autism: Distinct Reading Profiles and Their Relation to Autism Symptom Severity",
+  "authors": "Nancy S. McIntyre, Emily J. Solari, Ryan P. Grimm, Lindsay E. Lerro, Joseph E. Gonzales, Peter C. Mundy",
+  "year": 2017
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/s10803-017-3029-0.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2017-(McIntyre)-A-Comprehensive-Examination-of-Reading-Heterogeneity-in-Stud.md
+Response: {
+  "title": "Written Expression in Individuals with Autism Spectrum Disorder: A Meta-Analysis",
+  "authors": "Elizabeth Finnegan, Amy L. Accardo",
+  "year": 2018
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/s10803-017-3385-9.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2018-(Finnegan)-Written-Expression-in-Individuals-with-Autism-Spectrum-Disor.md
+Response: {
+  "title": "Effective inclusion practices for neurodiverse children and adolescents in informal STEM learning: a systematic review protocol",
+  "authors": "Ronda J. Jenson, Michele S Lee, Arden D. Day, Amy E. Hughes, Emma E. Maroushek, Kelly D. Roberts",
+  "year": 2023
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/s13643-023-02278-2.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2023-(Jenson)-Effective-inclusion-practices-for-neurodiverse-children-and.md
+Response: {
+  "title": "A Systematic Review of STEM Instruction with Students with Autism Spectrum Disorders",
+  "authors": "Hoda Ehsan, Mandy Rispoli, Catharine Lory, Emily Gregori",
+  "year": 2018
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/s40489-018-0142-8.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2018-(Ehsan)-A-Systematic-Review-of-STEM-Instruction-with-Students-with-A.md
+Response: {
+  "title": "An Evaluation of Education-Based Interventions for Students with Autism Spectrum Disorders Without Intellectual Disability: a Systematic Review",
+  "authors": "Caitlin M. Macmillan, Laura A. Pecora, Kathryn Ridgway, Merrilyn Hooley, Mary Thomson, Sarah Dymond, Emma Donaldson, Gary B. Mesibov, Mark A. Stokes",
+  "year": "2023"
+}Error parsing JSON: json: cannot unmarshal string into Go struct field Metadata.year of type int
+Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/s40489-021-00289-0.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/0-(Authors)-Unknown-Title.md
+Response: {
+  "title": "The Core Elements of Strength-Based Technology Programs for Youth on the Autism Spectrum: A Systematic Review of Qualitative Evidence",
+  "authors": "Matthew Jones, Marita Falkmer, Ben Milbourn, Tele Tan, Sven Bölte, Sonya Girdler",
+  "year": 2023
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/s40489-022-00302-0.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2023-(Jones)-The-Core-Elements-of-Strength-Based-Technology-Programs-for.md
+Response: {
+  "title": "Evidence-Based Practice in Inclusive Settings for Students with Autism: a Best-Evidence Synthesis",
+  "authors": "Rose A. Mason, Catharine Lory, Emily Gregori, Stephanie Gerow, Mandy J. Rispoli, Marie David, So Yeon Kim, Danni Wang",
+  "year": 2022
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/s40489-022-00352-4.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2022-(Mason)-Evidence-Based-Practice-in-Inclusive-Settings-for-Students-w.md
+Response: {
+  "title": "Executive Function in ADHD and ASD: A Scoping Review",
+  "authors": "Chunlin Liu, Parker Townes, Russell Schachar, Prabdeep Panesar, Soo Youn Lee, Dan Devoe, Paul Arnold, Jennifer Crosbie",
+  "year": 2024
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/s40489-024-00444-3.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2024-(Liu)-Executive-Function-in-ADHD-and-ASD-A-Scoping-Review.md
+Response: {
+  "title": "To the Roots of Theory of Mind Deficits in Autism Spectrum Disorder: A Narrative Review",
+  "authors": "Katarína Polónyiová, Joanna Kruyt, Daniela Ostatníková",
+  "year": 2024
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/s40489-024-00457-y.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2024-(Polónyiová)-To-the-Roots-of-Theory-of-Mind-Deficits-in-Autism-Spectrum-D.md
+Response: {
+  "title": "Beyond 'study skills': a curriculum-embedded framework for metacognitive development in a college chemistry course",
+  "authors": "Sonja Gamby, Christopher F. Bauer",
+  "year": 2022
+}Processed: /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/pdf/s40594-022-00376-6.pdf -> /Users/philiphaynes/devel/teaching/teaching/session2/EDST8060-an-independent-study/references/2022-(Gamby)-Beyond-'study-skills'-a-curriculum-embedded-framework-for-me.md

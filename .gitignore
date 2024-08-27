@@ -1,3 +1,5 @@
+# Ignore key
+markdown-proofer/unipdf.txt
 # Ignore the target directory in apa7_to_bibtex
 apa7_to_bibtex/target/
 
