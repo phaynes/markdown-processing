@@ -3,12 +3,10 @@ package pdf
 import (
 	"bytes"
 	"fmt"
-	"io"
-	"os"
+	"strings"
 	"time"
 
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu"
-	"github.com/pdfcpu/pdfcpu/pkg/pdfcpu/model"
+	"github.com/ledongthuc/pdf"
 )
 
 type Metadata struct {
@@ -18,54 +16,34 @@ type Metadata struct {
 }
 
 func ExtractContent(path string) (string, Metadata, error) {
-	file, err := os.Open(path)
+	f, r, err := pdf.Open(path)
 	if err != nil {
 		return "", Metadata{}, fmt.Errorf("error opening PDF: %v", err)
 	}
-	defer file.Close()
+	defer f.Close()
 
-	// Create a more lenient configuration
-	config := &model.Configuration{
-		ValidationMode:   model.ValidationRelaxed,
-		Reader15:         true, // Enable reading of PDF 1.5+ files
-		DecodeAllStreams: true,
-	}
-
-	ctx, err := pdfcpu.Read(file, config)
-	if err != nil {
-		return "", Metadata{}, fmt.Errorf("error reading PDF: %v", err)
-	}
+	totalPage := r.NumPage()
 
 	var content bytes.Buffer
-	for i := 1; i <= ctx.PageCount; i++ {
-		pageContent, err := pdfcpu.ExtractPageContent(ctx, i)
+	for pageIndex := 1; pageIndex <= totalPage; pageIndex++ {
+		p := r.Page(pageIndex)
+		if p.V.IsNull() {
+			continue
+		}
+		text, err := p.GetPlainText(nil)
 		if err != nil {
-			fmt.Printf("Warning: Error extracting content from page %d: %v\n", i, err)
-			continue // Skip this page but continue with others
+			fmt.Printf("Warning: Error extracting text from page %d: %v\n", pageIndex, err)
+			continue
 		}
-
-		// Create a buffer to read the page content
-		var pageBuffer bytes.Buffer
-		_, err = io.Copy(&pageBuffer, pageContent)
-		if err != nil {
-			fmt.Printf("Warning: Error copying content from page %d: %v\n", i, err)
-			continue // Skip this page but continue with others
-		}
-
-		if pageBuffer.Len() == 0 {
-			fmt.Printf("Warning: No text extracted from page %d of file %s\n", i, path)
-			continue // Skip this page but continue with others
-		}
-
-		// Copy page buffer to content buffer
-		content.Write(pageBuffer.Bytes())
+		content.WriteString(text)
+		content.WriteString("\n")
 	}
 
 	if content.Len() == 0 {
 		return "", Metadata{}, fmt.Errorf("extracted text is empty for file %s", path)
 	}
 
-	metadata, err := extractMetadata(ctx)
+	metadata, err := extractMetadata(r)
 	if err != nil {
 		return "", Metadata{}, fmt.Errorf("error extracting metadata: %v", err)
 	}
@@ -73,31 +51,28 @@ func ExtractContent(path string) (string, Metadata, error) {
 	return content.String(), metadata, nil
 }
 
-func extractMetadata(ctx *model.Context) (Metadata, error) {
+func extractMetadata(r *pdf.Reader) (Metadata, error) {
 	metadata := Metadata{
 		Title:   "Unknown Title",
 		Authors: "Unknown Author",
 		Year:    0,
 	}
 
-	if ctx.XRefTable.Info != nil {
-		info, err := ctx.XRefTable.DereferenceDict(*ctx.XRefTable.Info)
-		if err != nil {
-			return metadata, fmt.Errorf("error dereferencing info dictionary: %v", err)
-		}
+	info := r.Trailer().Key("Info")
 
-		if title := info.StringEntry("Title"); title != nil && *title != "" {
-			metadata.Title = *title
-		}
+	if title := info.Key("Title"); title.Kind() == pdf.String {
+		metadata.Title = title.String()
+	}
 
-		if author := info.StringEntry("Author"); author != nil && *author != "" {
-			metadata.Authors = *author
-		}
+	if author := info.Key("Author"); author.Kind() == pdf.String {
+		metadata.Authors = author.String()
+	}
 
-		if creationDate := info.StringEntry("CreationDate"); creationDate != nil && *creationDate != "" {
-			if t, err := time.Parse("20060102150405-07'00'", *creationDate); err == nil {
-				metadata.Year = t.Year()
-			}
+	if creationDate := info.Key("CreationDate"); creationDate.Kind() == pdf.String {
+		dateStr := strings.Trim(creationDate.String(), "(D:")
+		dateStr = strings.Split(dateStr, "+")[0] // Remove timezone part
+		if t, err := time.Parse("20060102150405", dateStr); err == nil {
+			metadata.Year = t.Year()
 		}
 	}
 

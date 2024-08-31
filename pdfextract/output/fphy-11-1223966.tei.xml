@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Supporting neurodivergent talent: ADHD, autism, and dyslexia in physics and space sciences</title>
+				<funder>
+					<orgName type="full">Charles A. Zilker endowment</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher>Frontiers Media SA</publisher>
+				<availability status="unknown"><p>Copyright Frontiers Media SA</p>
+				</availability>
+				<date type="published" when="2023-08-28">28 August 2023</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Niescja</forename><forename type="middle">E</forename><surname>Turner</surname></persName>
+							<email>nturner1@trinity.edu</email>
+							<affiliation key="aff0">
+								<orgName type="department">Department of Physics and Astronomy</orgName>
+								<orgName type="institution">Trinity University</orgName>
+								<address>
+									<settlement>San Antonio</settlement>
+									<region>TX</region>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Heather</forename><forename type="middle">Haynes</forename><surname>Smith</surname></persName>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<orgName type="institution">University of Michigan</orgName>
+								<address>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff3">
+								<orgName type="institution">New Jersey Institute of Technology</orgName>
+								<address>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff4">
+								<orgName type="department">John Coxon</orgName>
+								<orgName type="institution">Northumbria University</orgName>
+								<address>
+									<country key="GB">United Kingdom</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Supporting neurodivergent talent: ADHD, autism, and dyslexia in physics and space sciences</title>
+					</analytic>
+					<monogr>
+						<title level="j" type="main">Frontiers in Physics</title>
+						<title level="j" type="abbrev">Front. Phys.</title>
+						<idno type="eISSN">2296-424X</idno>
+						<imprint>
+							<publisher>Frontiers Media SA</publisher>
+							<biblScope unit="volume">11</biblScope>
+							<date type="published" when="2023-08-28">28 August 2023</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">E00E0BF703D27A0A371DECAAC236F7CB</idno>
+					<idno type="DOI">10.3389/fphy.2023.1223966</idno>
+					<note type="submission">RECEIVED 16 May 2023 ACCEPTED 15 August 2023</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.8.0" ident="GROBID" when="2024-08-31T03:54+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>neurodivergence</term>
+					<term>autism</term>
+					<term>ADHD</term>
+					<term>dyslexia</term>
+					<term>inclusion</term>
+					<term>disability</term>
+					<term>physics</term>
+					<term>space 1 Introduction: physics</term>
+					<term>space science</term>
+					<term>and neurodivergence</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Diversity, equity, inclusion, and belonging efforts must include disability and neurodivergence. While there is a long history of famous scientists being identified or speculatively indicated to be neurodivergent, identification on an individual basis has been limited until fairly recently. Definitions have changed and broadened, and people are being identified or are identifying themselves as neurodivergent and are learning about their paths and their brains in a way that was unavailable to people two decades ago. In the contemporary physics or space science classroom or workplace, we have both a responsibility to include and support our neurodivergent learners and scientists, as well as an opportunity to use insights from the neurodiversity movement to better support our teams and students. Herein we explain the language used to describe neurodivergent traits and offer strategies and ideas to support our neurodivergent community members. These strategies include ideas for supporting executive function as well as tips in the areas of physical comfort and sensory considerations.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<facsimile>
+		<surface n="1" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="2" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="3" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+		<surface n="4" ulx="0.0" uly="0.0" lrx="595.276" lry="841.89"/>
+	</facsimile>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>specifically shown that autism and autistic traits are more common in physicists' families than in most other occupations <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b7">8]</ref>.</p><p>As these traits are more common in the broader physics-related community than other areas, physicists and space scientists could particularly benefit from making their workplaces more neurodivergent-friendly.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.1">Neurodivergence and the neurodiversity movement</head><p>Neurodiversity is a vast umbrella term, including differences as wide-ranging as ADHD (which now includes what was once known as ADD), dyslexia, Tourette's, bipolar, autism, anxiety, and every possible combination of those and many others. Neurodivergent people approach tasks, problems, design, etc. in different, divergent, ways from neurotypical people. The term emphasizes brain, or neurologic, differences.</p><p>Concurrent with the evolution of this term is a neurodiversity movement. Emily Ladau <ref type="bibr" target="#b8">[9]</ref> suggests that "for far too long, we've been led to believe that people have either "good" brains or "bad" brains, "normal" ones, or "abnormal" ones. Neurodiversity is a concept that rejects morality-and value-based judgements of the human mind, instead embracing the naturally occurring fact that no one's brain is exactly like anyone else's brain."</p><p>Herein we will address how to support neurodivergent talent and let people flourish as who they are. We will not attempt to break down strategies by neurotype, first because neurodivergent traits manifest so differently in each individual, but also because in practice we do not often know the neurotypes of the students and scientists we work with (nor do we need to). These are intended as broad strategies. In every case, these apply to some individuals but not all, and the key is letting people be who they are and doing what works for them.</p><p>Even if a PI or professor is themself neurodivergent, they may still need help in learning to accommodate their students or research team, because these traits can manifest very differently, and what works for one may not work for another. It is not necessary (nor usually appropriate) to ask about a person's neurotype. Instead, if someone has needs that are different than others, adjustments should be made to reflect this. It is useful to jettison deficit-based thinking, and instead support people while emphasizing their individual strengths and assets.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.2">Spiky skill sets: unrelated skills are unrelated</head><p>One characteristic of note has been termed by the neurodivergent community as a "spiky" skill set. This refers to the observation that unrelated skills are unrelated, so struggles or strengths in one area do not necessarily imply anything about ability in another area. For example, the ability to do complex mathematics is unrelated to the ability to tie shoes, so the former does not imply skill in the latter (nor vice versa). There have been recent news articles about some non-speaking autistic people being valedictorians, but this should not be surprising, since speaking is an ability that is not directly related to thinking and completing schoolwork. Another important example is the ability to spell words correctly. While people who are brilliant scientists and can also spell well might not always realize it, these are actually unrelated skills, so a person who has difficulty spelling (as, for example, is the case with some dyslexic individuals) may be just as gifted a researcher as their spelling-bee-champion peers.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2">Neurodiversity-affirming (nonstigmatizing) language</head><p>While many senior scientists may be unfamiliar with the language of neurodiversity, recently people have grown up with a language to describe their identity and specific differences. One of the most straightforward ways to be supportive of neurodivergent students or colleagues is to avoid language that is stigmatizing or "othering." Table <ref type="table" target="#tab_0">1</ref> has several examples of commonly used pathologizing language juxtaposed with more neurodiversityaffirming counterparts. While not an exhaustive list, it does cover several of the major known problematic words and phrases that are often used in both the medical literature and the mass media.</p><p>For example, the adult autistic community has been clear that they do not consider autism to be a disease or pathology that they "have," but rather a neurotype. A recent survey has shown <ref type="bibr" target="#b9">[10]</ref> that 87% of autistic adults surveyed prefer to be called "autistic" rather than be described as "having" autism. In English, people are not said to "have" left-handedness or gayness, and they should similarly not be described as "having" some condition called autism.</p><p>Similarly, neurotypes should not be referred to as "disorders," and neurodivergent traits should not be presumed to be deficits. Medical texts often pathologize what they term "restricted interests" when they are referring to autistic people, where typical people are simply said to have passions. It is not necessary to pathologize the hyperfocus and deep dives common in autistic and ADHD neurotypes.</p><p>Functioning labels are often used in the medical community to describe autistic people as high-or low-functioning. These are problematic because they oversimplify and provide no information on any actual accommodation needs of either group. For more in-depth discussion on this language, see <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b11">12]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3">Organization and executive function</head><p>An expression sometimes heard in the online neurodivergent community is "If you can't handle my executive dysfunction, you don't deserve my hyperfocus." This reflects the frustration of people whose collection of traits include talents that their employers want to make use of, while those same employers disregard or even stigmatize any need for adjustment or accommodation.</p><p>Executive function is a term that refers to proficiency in areas of attention, self-regulation, and goal-directed problem solving. Fortunately this skill set is malleable and can be improved <ref type="bibr" target="#b12">[13]</ref>, and there is evidence for teaching practices that enhance attention, organization, time management, and motivation <ref type="bibr" target="#b13">[14]</ref>. Some accommodations can support a variety of skills in executive function including, but certainly not limited to, the ability to "sustain attention, keep goals and information in mind, refrain from responding immediately, resist distractions, tolerate frustration, consider the consequences of different behaviors, reflect on past experiences, and plan for the future" <ref type="bibr" target="#b12">[13]</ref>.</p><p>Some neurodivergent students and researchers may at times be able to hyperfocus on topics and do deep dives on them, which is helpful for research. As in any scenario dealing with real humans, their strengths are more evident when they are supported in ways that allow them to flourish, and some neurodivergent people can benefit from accommodations in executive functioning.</p><p>Executive function supports can include basic things like consistently using shared online calendars and making use of automated reminders.</p><p>Often a due date is helpful for time management purposes, but allowing a cushion after any artificial due dates can be useful. Also, letting students help select a due date (particularly for an extension) if needed has the benefit of the urgency of a deadline coupled with the knowledge they set it themselves, and often produces results.</p><p>Additionally, multiple means of communication can be useful. For example, while some do well with spoken descriptions and instructions, many do better with written communication. In class settings or labs with many members, using multiple forms of communication helps to keep everyone informed.</p><p>Finally, many individuals do best with clear, unambiguous language where they do not need to make inferences, and with step-by-step instructions to break down a large project into smaller pieces.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4">Physical comfort and sensory considerations</head><p>Another key consideration in an inclusive physics or space science workspace is physical comfort and sensory experience. Neurotypical people may experience their sensory environment differently than their neurodivergent peers. The way the brain filters and processes sensory information, such as noise, light, odors, movement, and physical positioning, varies from person to person. Being responsive to requests about the classroom or lab environment is paramount.</p><p>Due to differences in propioception, many neurodivergent people may prefer to sit in unconventional ways. Letting students stand or sit as they like, including cross-legged on chairs or on the floor (especially during exams) or letting them feel free to rock or move ("stim") to help focus can be important. Some will use fidget toys-the American Geophysical Union, for example, keeps large baskets of fidgets in some of their conference rooms at their headquarters-letting people move or fidget in this way can help people think or retain focus and should not be stigmatized. Some departments even have coloring pages at seminars to allow people to doodle or color stigma-free to help attendees focus on the talks.</p><p>Sound is an important consideration, and individuals may opt to wear noise-canceling headphones. Bright or overhead lighting can be uncomfortable or can even cause headaches or migraine attacks. If a person doesn't want overhead lights, they may prefer to make use of light from windows or lamps or use task lighting in the lab.</p><p>Another common difference involves eye contact. While many neurodivergent people enjoy eye contact, for some it can be distracting or uncomfortable. Due to the different ways people process and filter sensory information, for some people having the added visual stimulation from eye contact can be distracting or even overwhelming when also trying to focus on listening to what a person is saying. Some neurodivergent people intentionally look at the bridge of a nose or a forehead to give an illusion of eye contact, but it shouldn't be necessary to accommodate neurotypical people in this way. Realizing this and not pressuring neurodivergent people to accommodate neurotypical norms by performing eye contact can provide a more comfortable work environment.</p><p>Another key physical comfort piece is sleep: delayed sleep phase (a difference in circadian rhythm) can go along with neurodivergence, and can lead to awake times or productive times being very late or very early in the day compared to peers. These differences are not moral failings and should not be treated as such-scheduling meeting times when possible to match an individual's circadian rhythm is a simple accommodation. A key point of neurodiversity is to not moralize around neurological differences. A missed email, an untidy desk, or a different circadian rhythm are not moral failures. A preference for less eye contact, use of fidget tools, or doodling during colloquium do not indicate a problem. Letting people be who they are without stigmatizing allows them to flourish.</p><p>The current model of accommodation in universities and some workplace settings is one of a student or employee needing an official medical diagnosis of a condition along with a list of specific accommodations required. This is cumbersome at a minimum, but can even be unattainable, as medical evaluations can be thousands of dollars, and women and people of color are less commonly diagnosed than their peers. Certainly any recommendations received this way should be followed, but this is really a minimum. Reasonable accommodations should be allowed even in the absence of a medical diagnosis. The overarching strategy should be to not let what someone can't do get in the way of what they can do.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>TABLE 1</head><label>1</label><figDesc>Neurodiversity-affirming language, contrasted with some common and problematic versions currently in use. A few of these apply specifically to autism, since it is more commonly pathologized than some other neurotypes.</figDesc><table><row><cell>Language guide</cell><cell></cell></row><row><cell>Use this (Neurodiversity-affirming Language)</cell><cell>Avoid this (Pathologizing Language)</cell></row><row><cell>Autistic Person</cell><cell>"Person with autism"</cell></row><row><cell>Autism</cell><cell>ASD (autism spectrum disorder)</cell></row><row><cell>Traits</cell><cell>Symptoms</cell></row><row><cell>Identification</cell><cell>Diagnosis</cell></row><row><cell>Neurotype</cell><cell>Disorder</cell></row><row><cell>Co-occurring</cell><cell>Comorbid</cell></row><row><cell>Passions or Interests</cell><cell>"Restricted interests"</cell></row><row><cell>Typical</cell><cell>Normal</cell></row><row><cell>Naming specific supports or accommodations</cell><cell>Functioning levels (e.g., high-functioning or low-functioning)</cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_0"><p>Frontiers in Physics frontiersin.org</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_1"><p>Turner and Smith 10.3389/fphy.2023.1223966</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgments</head><p>The authors (who are each individually neurodivergent, but in different ways, so they are collectively neurodiverse) would like to thank the neurodivergent and autistic communities for their insights. They specifically acknowledge #ActuallyAutistic Twitter, <rs type="person">Lydia X. Z. Brown</rs>, and <rs type="person">YouTubers Paul Micallef</rs> ("<rs type="affiliation">Autism from the Inside"</rs>), <rs type="person">Jessica McCabe</rs> ("How to ADHD"), and <rs type="person">Samantha Stein</rs> ("<rs type="person">Yo Samdy Sam</rs>"), as well as the creators of the film This is Not About Me and the <rs type="institution">Autistic Self-Advocacy Network</rs> for their thought-provoking and illuminating work. They further acknowledge helpful discussions with <rs type="person">Luis Martínez</rs> and <rs type="person">Orrin Shindell</rs>.</p></div>
+			</div>
+			<div type="funding">
+<div><head>Funding</head><p>NT is supported by the <rs type="funder">Charles A. Zilker endowment</rs>.</p></div>
+			</div>
+			<listOrg type="funding">
+			</listOrg>
+
+			<div type="availability">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Data availability statement</head><p>The original contributions presented in the study are included in the article/Supplementary Material, further inquiries can be directed to the corresponding author.</p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Author contributions</head><p>NT originated and led the work, in collaboration with HS. All authors contributed to the article and approved the submitted version.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Conflict of interest</head><p>The authors declare that the research was conducted in the absence of any commercial or financial relationships that could be construed as a potential conflict of interest.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Publisher's note</head><p>All claims expressed in this article are solely those of the authors and do not necessarily represent those of their affiliated organizations, or those of the publisher, the editors and the reviewers. Any product that may be evaluated in this article, or claim that may be made by its manufacturer, is not guaranteed or endorsed by the publisher.</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Cultivating a culture of inclusivity in heliophysics</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Halford</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">G</forename><surname>Burrell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">W</forename><surname>Liemohn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Jones</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Maute</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Turner</surname></persName>
+		</author>
+		<idno type="DOI">10.3389/fphy.2023.1061683</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Front Phys</title>
+		<imprint>
+			<biblScope unit="page">11</biblScope>
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Singular scientists</title>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">M</forename><surname>James</surname></persName>
+		</author>
+		<idno type="DOI">10.1177/014107680309600112</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J R Soc Med</title>
+		<imprint>
+			<biblScope unit="volume">96</biblScope>
+			<biblScope unit="page" from="36" to="39" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<author>
+			<persName><forename type="first">T</forename><surname>Hartmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">J</forename><surname>Palladino</surname></persName>
+		</author>
+		<title level="m">The Edison gene: ADHD and the gift of the hunter child</title>
+		<meeting><address><addrLine>Rochester, Vermont</addrLine></address></meeting>
+		<imprint>
+			<publisher>Park Street Press</publisher>
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Autism in mathematicians</title>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">M</forename><surname>James</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/bf02984863</idno>
+	</analytic>
+	<monogr>
+		<title level="j">The Math Intelligencer</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="page" from="62" to="65" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<monogr>
+		<title/>
+		<author>
+			<persName><forename type="first">S</forename><surname>Silberman</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Neurotribes</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<publisher>Avery</publisher>
+			<pubPlace>New York city</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<monogr>
+		<author>
+			<persName><forename type="first">F</forename><surname>Dyson</surname></persName>
+		</author>
+		<title level="m">Silent quantum genius</title>
+		<meeting><address><addrLine>Newyork, NY, USA</addrLine></address></meeting>
+		<imprint>
+			<publisher>New York Review of Books</publisher>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Autism occurs more often in families of physicists, engineers, and mathematicians</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Baron-Cohen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Bolton</surname></persName>
+		</author>
+		<author>
+			<persName><surname>Sw</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Scahill</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Short</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Mead</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Autism</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<date type="published" when="1998">1998</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">The Autism-Spectrum Quotient (AQ): Evidence from asperger syndrome/high-functioning autism, males and females, scientists and mathematicians</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Baron-Cohen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Wheelwright</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Skinner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Martin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Clubley</surname></persName>
+		</author>
+		<idno type="DOI">10.1023/a:1005653411471</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J Autism Dev Disord</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="page" from="5" to="17" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<monogr>
+		<title level="m" type="main">Demystifying disability</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Ladau</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2021">2021</date>
+			<publisher>Random House</publisher>
+			<pubPlace>New York</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Preferences for identity-first versus personfirst language in a US sample of autism stakeholders</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Taboas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Doepke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zimmerman</surname></persName>
+		</author>
+		<idno type="DOI">10.1177/13623613221130845</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Autism</title>
+		<imprint>
+			<biblScope unit="volume">27</biblScope>
+			<biblScope unit="page" from="565" to="570" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Does language matter? Identity-First versus person-first language use in autism research: A response to vivanti</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Botha</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Hanlon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">L</forename><surname>Williams</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10803-020-04858-w</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J Autism Dev Disord</title>
+		<imprint>
+			<biblScope unit="volume">53</biblScope>
+			<biblScope unit="page" from="870" to="878" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">The use of language in autism research</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Monk</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Ajo</forename><surname>Whitehouse</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Waddington</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.tins.2022.08.009</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Trends Neurosciences</title>
+		<imprint>
+			<biblScope unit="volume">45</biblScope>
+			<biblScope unit="page" from="791" to="793" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<monogr>
+		<title level="m" type="main">Executive function: Implications for education</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Zelazo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Blair</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Willoughby</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<pubPlace>Washington, DC</pubPlace>
+		</imprint>
+		<respStmt>
+			<orgName>National Center for Education Research, Institute of Education Sciences, U.S. Department of Education</orgName>
+		</respStmt>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<monogr>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">P</forename><surname>Turnbull</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Turnbull</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">L</forename><surname>Wehmeyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">A</forename><surname>Shogren</surname></persName>
+		</author>
+		<title level="m">Exceptional lives: Practice, progress, dignity in today&apos;s schools</title>
+		<imprint>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

@@ -166,6 +166,30 @@ def run_pandoc_markdown(config):
 
     return output_file
 
+def run_pandoc_docx(config):
+    input_files = config['input_files']
+    output_file = config['output_file']
+
+    pandoc_command = [
+        'pandoc',
+        '--from=markdown+tex_math_single_backslash',
+        '--to=docx',
+        f'--output={output_file}',
+        f'--bibliography={config["bibliography"]}',
+        f'--csl=/usr/local/share/pandoc/data/apa.csl',
+        '--citeproc',
+        '--reference-doc=/usr/local/share/pandoc/data/reference.docx',
+    ]
+
+    add_metadata(pandoc_command, config)
+    pandoc_command.extend(input_files)
+
+    run_command(pandoc_command, "Pandoc (Markdown to DOCX)")
+
+    print(f"DOCX file created: {output_file}")
+
+    return output_file
+
 def add_metadata(pandoc_command, config):
     for key in ['title', 'author', 'affiliation', 'course', 'instructor', 'date', 'shorttitle', 'keywords', 'bibliography']:
         if key in config:

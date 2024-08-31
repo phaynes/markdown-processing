@@ -43,6 +43,8 @@ COPY apa7.latex /usr/local/share/pandoc/data/
 # Copy the conversion script
 COPY convert.py /scripts/convert.py
 
+COPY reference.docx /usr/local/share/pandoc/data/
+
 # Set the working directory to /data
 WORKDIR /data
 
