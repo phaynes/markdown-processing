@@ -4,6 +4,10 @@ from openai import OpenAI
 from typing import List, Dict, Optional
 import logging
 import bibtexparser
+import unicodedata
+import re
+from datetime import datetime
+
 from dataclasses import dataclass
 
 @dataclass
@@ -36,6 +40,49 @@ def safe_find_text(element: Optional[ET.Element], xpath: str, namespaces: Dict[s
     found = element.find(xpath, namespaces)
     return found.text if found is not None else None
 
+def remove_diacritics(text):
+    """Remove diacritics from the given text."""
+    return ''.join(c for c in unicodedata.normalize('NFKD', text)
+                   if unicodedata.category(c) != 'Mn')
+
+def safe_filename(text):
+    """Convert text to a safe filename."""
+    text = remove_diacritics(text)
+    return re.sub(r'[^a-zA-Z0-9]', '', text).lower()
+
+def extract_paper_authors(root: ET.Element, namespaces: Dict[str, str]) -> List[str]:
+    """Extract all authors from the <analytic> section."""
+    authors = []
+    analytic_section = root.find(".//tei:analytic", namespaces)
+    if analytic_section is not None:
+        for author in analytic_section.findall("tei:author", namespaces):
+            persName = author.find("tei:persName", namespaces)
+            if persName is not None:
+                surname = persName.find("tei:surname", namespaces)
+                forename = persName.find("tei:forename", namespaces)
+                if surname is not None and forename is not None:
+                    authors.append(f"{surname.text}, {forename.text[0]}.")
+    return authors
+
+def parse_date(date_string):
+    if not date_string:
+        return None
+
+    date_string = date_string.strip()
+
+    # Check if the date format is "YYYY-MM-DD" or "YYYY-MM"
+    if '-' in date_string:
+        return date_string.split('-')[0]
+
+    # Try to find a 4-digit year anywhere in the string
+    match = re.search(r'\b(\d{4})\b', date_string)
+    if match:
+        return match.group(1)
+
+    # If no year could be parsed, return None
+    return None
+
+
 def parse_xml(file_path: str) -> Optional[Paper]:
     try:
         tree = ET.parse(file_path)
@@ -43,26 +90,21 @@ def parse_xml(file_path: str) -> Optional[Paper]:
         ns = {'tei': 'http://www.tei-c.org/ns/1.0'}
 
         title = safe_find_text(root, ".//tei:titleStmt/tei:title", ns)
-
-        # Extract authors (only from the analytic section)
-        authors = []
-        for author in root.findall(".//tei:analytic/tei:author", ns):
-            forename = safe_find_text(author, ".//tei:persName/tei:forename", ns)
-            surname = safe_find_text(author, ".//tei:persName/tei:surname", ns)
-            if surname:
-                full_name = f"{surname}, {forename[0]}." if forename else surname
-                authors.append(full_name)
+        authors = extract_paper_authors(root, ns)
 
         # Extract year and full date
         date = safe_find_text(root, ".//tei:publicationStmt/tei:date[@type='published']", ns)
-        year = date.split('-')[0] if date else None
+        year = parse_date(date)
         full_date = date
 
         # Extract journal information
         journal_title = safe_find_text(root, ".//tei:monogr/tei:title[@level='j']", ns)
         volume = safe_find_text(root, ".//tei:monogr/tei:imprint/tei:biblScope[@unit='volume']", ns)
         issue = safe_find_text(root, ".//tei:monogr/tei:imprint/tei:biblScope[@unit='issue']", ns)
-        pages = safe_find_text(root, ".//tei:monogr/tei:imprint/tei:biblScope[@unit='page']", ns)
+
+        # Extract page numbers
+        page_elem = root.find(".//tei:monogr/tei:imprint/tei:biblScope[@unit='page']", ns)
+        pages = f"{page_elem.get('from')}-{page_elem.get('to')}" if page_elem is not None else None
 
         # Extract DOI
         doi = safe_find_text(root, ".//tei:idno[@type='DOI']", ns)
@@ -78,7 +120,10 @@ def parse_xml(file_path: str) -> Optional[Paper]:
         body_element = root.find(".//tei:body", ns)
         body = ET.tostring(body_element, encoding='unicode', method='text') if body_element is not None else ""
 
-        return Paper(title, authors, year, full_date, journal_title, volume, issue, pages, doi, abstract, introduction, conclusion, body, os.path.basename(file_path), publisher)
+        output_filename = os.path.basename(file_path)
+
+        return Paper(title, authors, year, full_date, journal_title, volume, issue, pages, doi, abstract, introduction, conclusion, body, output_filename, publisher)
+
     except ET.ParseError as e:
         logging.error(f"XML parsing error in {file_path}: {e}")
         return None
@@ -106,15 +151,17 @@ def summarize_text(text: str, query: str) -> str:
         return f"Error in summarization: {str(e)}"
 
 def generate_apa_reference(paper: Paper) -> str:
-    authors = ", ".join(paper.authors) if paper.authors else "Unknown"
-    if len(paper.authors) > 1:
-        authors = ", ".join(paper.authors[:-1]) + ", & " + paper.authors[-1]
+    if len(paper.authors) > 2:
+        citation_authors = f"{paper.authors[0]}, et al."
+    else:
+        citation_authors =", ".join(paper.authors) if paper.authors else "Unknown"
+
     year = paper.year or "n.d."
     title = paper.title or "Untitled"
     journal = paper.journal_title or "Unknown Journal"
     doi = paper.doi or ""
 
-    apa_ref = f"{authors} ({year}). {title}. *{journal}*"
+    apa_ref = f"{citation_authors} ({year}). {title}. *{journal}*"
     if paper.volume:
         apa_ref += f", {paper.volume}"
         if paper.issue:
@@ -131,7 +178,10 @@ def generate_bibtex_reference(paper: Paper) -> str:
     authors = " and ".join(paper.authors) if paper.authors else "Unknown"
     year = paper.year or "unknown"
     title = paper.title or "Untitled"
-    key = f"{paper.authors[0].split(',')[0] if paper.authors else 'Unknown'}{year}"
+
+    key_authors = remove_diacritics(f"{paper.authors[0].split(',')[0] if paper.authors else 'Unknown'}")
+
+    key = f"{key_authors}{year}"
     journal = paper.journal_title or "Unknown Journal"
     volume = paper.volume or ""
     number = paper.issue or ""
@@ -202,7 +252,9 @@ def process_papers(directory_path: str, query: str) -> List[Dict[str, str]]:
                 # Create a safe filename
                 safe_title = ''.join(c if c.isalnum() else '-' for c in (paper.title or 'Untitled'))
                 safe_title = safe_title[:50]  # Limit the length of the title in the filename
-                output_filename = f"{paper.year or 'unknown'}-({paper.authors[0] if paper.authors else 'unknown'})-{safe_title}-summary.md"
+                safe_author = safe_filename(paper.authors[0].split(',')[0] if paper.authors else 'unknown')
+
+                output_filename = f"{paper.year or 'unknown'}-({safe_author})-{safe_title}-summary.md"
                 output_path = os.path.join("/usr/src/app/output", output_filename)
                 with open(output_path, 'w') as md_file:
                     md_file.write(markdown_content)
