@@ -11,11 +11,18 @@ class Paper:
     title: Optional[str]
     authors: List[str]
     year: Optional[str]
+    full_date: Optional[str]
+    journal_title: Optional[str]
+    volume: Optional[str]
+    issue: Optional[str]
+    pages: Optional[str]
+    doi: Optional[str]
     abstract: Optional[str]
     introduction: Optional[str]
     conclusion: Optional[str]
     body: Optional[str]
     filename: str
+    publisher: Optional[str]
 
 def load_api_key(file_path: str) -> str:
     with open(file_path, 'r') as file:
@@ -36,8 +43,33 @@ def parse_xml(file_path: str) -> Optional[Paper]:
         ns = {'tei': 'http://www.tei-c.org/ns/1.0'}
 
         title = safe_find_text(root, ".//tei:titleStmt/tei:title", ns)
-        authors = [safe_find_text(author, "tei:surname", ns) or "" for author in root.findall(".//tei:author", ns)]
-        year = safe_find_text(root, ".//tei:date", ns)
+
+        # Extract authors (only from the analytic section)
+        authors = []
+        for author in root.findall(".//tei:analytic/tei:author", ns):
+            forename = safe_find_text(author, ".//tei:persName/tei:forename", ns)
+            surname = safe_find_text(author, ".//tei:persName/tei:surname", ns)
+            if surname:
+                full_name = f"{surname}, {forename[0]}." if forename else surname
+                authors.append(full_name)
+
+        # Extract year and full date
+        date = safe_find_text(root, ".//tei:publicationStmt/tei:date[@type='published']", ns)
+        year = date.split('-')[0] if date else None
+        full_date = date
+
+        # Extract journal information
+        journal_title = safe_find_text(root, ".//tei:monogr/tei:title[@level='j']", ns)
+        volume = safe_find_text(root, ".//tei:monogr/tei:imprint/tei:biblScope[@unit='volume']", ns)
+        issue = safe_find_text(root, ".//tei:monogr/tei:imprint/tei:biblScope[@unit='issue']", ns)
+        pages = safe_find_text(root, ".//tei:monogr/tei:imprint/tei:biblScope[@unit='page']", ns)
+
+        # Extract DOI
+        doi = safe_find_text(root, ".//tei:idno[@type='DOI']", ns)
+
+        # Extract publisher
+        publisher = safe_find_text(root, ".//tei:publicationStmt/tei:publisher", ns)
+
         abstract = safe_find_text(root, ".//tei:abstract", ns)
         introduction = safe_find_text(root, ".//tei:body//tei:div[@type='introduction']", ns)
         conclusion = safe_find_text(root, ".//tei:body//tei:div[@type='conclusion']", ns)
@@ -46,24 +78,27 @@ def parse_xml(file_path: str) -> Optional[Paper]:
         body_element = root.find(".//tei:body", ns)
         body = ET.tostring(body_element, encoding='unicode', method='text') if body_element is not None else ""
 
-        return Paper(title, authors, year, abstract, introduction, conclusion, body, os.path.basename(file_path))
+        return Paper(title, authors, year, full_date, journal_title, volume, issue, pages, doi, abstract, introduction, conclusion, body, os.path.basename(file_path), publisher)
     except ET.ParseError as e:
         logging.error(f"XML parsing error in {file_path}: {e}")
+        return None
+    except Exception as e:
+        logging.error(f"Error processing {file_path}: {str(e)}")
         return None
 
 def summarize_text(text: str, query: str) -> str:
     try:
         # Truncate the text if it's too long
-        max_tokens = 4000  # Adjust this value based on your needs and model limits
+        max_tokens = 10000  # Adjust this value based on your needs and model limits
         truncated_text = text[:max_tokens * 4]  # Approximate 1 token to 4 characters
 
         response = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-4o-2024-08-06",
             messages=[
                 {"role": "system", "content": "You are a helpful assistant that summarizes academic papers."},
                 {"role": "user", "content": f"Summarize the following text in relation to this query: {query}\n\n{truncated_text}"}
             ],
-            max_tokens=500  # Increased for a more comprehensive summary
+            max_tokens=400  # Increased for a more comprehensive summary
         )
         return response.choices[0].message.content.strip()
     except Exception as e:
@@ -71,19 +106,51 @@ def summarize_text(text: str, query: str) -> str:
         return f"Error in summarization: {str(e)}"
 
 def generate_apa_reference(paper: Paper) -> str:
-    authors = ", ".join(filter(None, paper.authors))
-    return f"{authors} ({paper.year or 'n.d.'}). {paper.title or 'Untitled'}. Journal Title. Volume(Issue), pages."
+    authors = ", ".join(paper.authors) if paper.authors else "Unknown"
+    if len(paper.authors) > 1:
+        authors = ", ".join(paper.authors[:-1]) + ", & " + paper.authors[-1]
+    year = paper.year or "n.d."
+    title = paper.title or "Untitled"
+    journal = paper.journal_title or "Unknown Journal"
+    doi = paper.doi or ""
+
+    apa_ref = f"{authors} ({year}). {title}. *{journal}*"
+    if paper.volume:
+        apa_ref += f", {paper.volume}"
+        if paper.issue:
+            apa_ref += f"({paper.issue})"
+    if paper.pages:
+        apa_ref += f", {paper.pages}"
+    if doi:
+        apa_ref += f". https://doi.org/{doi}"
+    apa_ref += "."
+
+    return apa_ref
 
 def generate_bibtex_reference(paper: Paper) -> str:
-    authors = " and ".join(filter(None, paper.authors))
-    return f"""@article{{{paper.authors[0].lower() if paper.authors else 'unknown'}{paper.year or 'unknown'},
-  title={{{paper.title or 'Untitled'}}},
-  author={{{authors}}},
-  year={{{paper.year or 'n.d.'}}},
-  journal={{Journal Title}},
-  volume={{Volume}},
-  number={{Issue}},
-  pages={{pages}}
+    authors = " and ".join(paper.authors) if paper.authors else "Unknown"
+    year = paper.year or "unknown"
+    title = paper.title or "Untitled"
+    key = f"{paper.authors[0].split(',')[0] if paper.authors else 'Unknown'}{year}"
+    journal = paper.journal_title or "Unknown Journal"
+    volume = paper.volume or ""
+    number = paper.issue or ""
+    pages = paper.pages or ""
+    doi = paper.doi or ""
+    publisher = paper.publisher or ""
+
+    return f"""@article{{{key},
+  author = {{{authors}}},
+  title = {{{title}}},
+  journal = {{{journal}}},
+  year = {{{year}}},
+  volume = {{{volume}}},
+  number = {{{number}}},
+  pages = {{{pages}}},
+  doi = {{{doi}}},
+  url = {{https://doi.org/{doi}}},
+  publisher = {{{publisher}}},
+  issn = {{2195-7185}}
 }}"""
 
 def create_markdown_summary(paper: Paper, summary: str, query: str) -> str:
@@ -132,7 +199,10 @@ def process_papers(directory_path: str, query: str) -> List[Dict[str, str]]:
 
                 markdown_content = create_markdown_summary(paper, summary, query)
 
-                output_filename = f"{paper.year or 'unknown'}-({paper.authors[0] if paper.authors else 'unknown'})-{(paper.title or 'Untitled').replace(' ', '-')[:50]}-summary.md"
+                # Create a safe filename
+                safe_title = ''.join(c if c.isalnum() else '-' for c in (paper.title or 'Untitled'))
+                safe_title = safe_title[:50]  # Limit the length of the title in the filename
+                output_filename = f"{paper.year or 'unknown'}-({paper.authors[0] if paper.authors else 'unknown'})-{safe_title}-summary.md"
                 output_path = os.path.join("/usr/src/app/output", output_filename)
                 with open(output_path, 'w') as md_file:
                     md_file.write(markdown_content)
@@ -140,7 +210,7 @@ def process_papers(directory_path: str, query: str) -> List[Dict[str, str]]:
                 summaries.append({"filename": output_filename, "content": markdown_content, "relevance": len(summary)})
                 logging.info(f"Processed {filename}")
             except Exception as e:
-                logging.error(f"Error processing {filename}: {e}")
+                logging.error(f"Error processing {filename}: {str(e)}")
 
     return sorted(summaries, key=lambda x: x['relevance'], reverse=True)
 
